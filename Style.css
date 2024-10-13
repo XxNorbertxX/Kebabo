@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+wrapper {
+    display: flex;
+}
+section {
+    width: 100%;
+    height: 100vh;
+}
+section.NaviSection {
+    
+    display: flex;
+    position: absolute;
+    background-color: #eb8f00;
+    background-image: linear-gradient(#eb8f00, #d2c1af);
+
+    align-items: center;
+    height: 15vh;
+    box-shadow: 0 5px 5px  #888;
+}
+.NaviSection img {
+    height: 15vh;
+
+}
+nav {
+
+}
+nav ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
+    
+}
+nav ul  li {
+    list-style-type: none;
+    font-size: 25px;
+}
+nav ul li a {
+    margin: 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+}
+
+.AboutMeSection {
+    position: absolute;
+    top: 16vh;
+}
+.AboutMeSection img {
+    width: 100%;
+    height: 100vh;
+    
+    
+    position: absolute;
+}
+h1 {
+    position: absolute;
+    top: 14vh;
+    left: 14vw;
+    font-size: 2.5rem;
+    border: 1px solid white;
+    width: 15vw;
+    padding: 14px;
+}
+.AboutMeSection p {
+    position: absolute;
+    top: 40vh;
+    width: 40vw;
+    margin-left: 50px;
+    font-size: 1.5rem;
+    color: #e3e2c5;
+}
+.MenuSection {
+    top: 116vh;
+    position: absolute;
+    background-color: #d2c1af;
+}
+h2 {
+    text-decoration: underline 2px gold;
+    text-underline-offset: 10px;
+    text-align: center;
+    margin-top: 15px;
+}
+pre {
+    margin-top: 50px;
+    margin-left: 15vw;
+    font-size: 18px;
+}
