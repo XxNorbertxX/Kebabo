@@ -21,9 +21,43 @@ section.NaviSection {
     height: 15vh;
 
 }
-nav {
 
+.burger {
+    transform: translateY(-200%);
+    position: fixed;
+    z-index: 9;
+    top: 40px;
+    right: 40px;
+    font-size: 40px;
+    line-height: 50px;
+    transition: .3s linear;
 }
+.burger.show {
+    transform: translateY(0);
+}
+.burger:hover {
+    cursor: pointer;
+}
+ul {
+    position: absolute;
+    transition: .3s linear;
+}
+.fa-solid {
+    display: none;
+}
+i.show {
+    display: block;
+}
+
+ul.show {
+    left: 0px;
+    position: fixed;
+    z-index: 8;
+}
+ul.show li a {
+    color: white;
+}
+
 nav ul {
     display: flex;
     justify-content: flex-start;
