@@ -9,60 +9,21 @@ section {
     width: 100%;
     height: 100vh;
 }
-section.NaviSection {
-    
+section.NaviSection { 
     display: flex;
     position: absolute;
     align-items: center;
     height: 15vh;
     box-shadow: 0 5px 5px  #888;
+    background-image: linear-gradient(#795944, rgba(255 255 230)); 
 }
 .NaviSection img {
     height: 15vh;
-
 }
-
-.burger {
-    transform: translateY(-200%);
-    position: fixed;
-    z-index: 9;
-    top: 40px;
-    right: 40px;
-    font-size: 40px;
-    line-height: 50px;
-    transition: .3s linear;
-}
-.burger.show {
-    transform: translateY(0);
-}
-.burger:hover {
-    cursor: pointer;
-}
-ul {
-    position: absolute;
-    transition: .3s linear;
-}
-.fa-solid {
-    display: none;
-}
-i.show {
-    display: block;
-}
-
-ul.show {
-    left: 0px;
-    position: fixed;
-    z-index: 8;
-}
-ul.show li a {
-    color: white;
-}
-
 nav ul {
     display: flex;
     justify-content: flex-start;
-    align-items: end;
-    
+    align-items: end;   
 }
 nav ul  li {
     list-style-type: none;
@@ -74,16 +35,45 @@ nav ul li a {
     color: black;
     font-size: 22px;
 }
-
+.burger {
+    transform: translateX(260%);
+    position: fixed;
+    z-index: 9;
+    top: 40px;
+    right: 40px;
+    font-size: 40px;
+    line-height: 50px;
+    transition: .3s linear;
+}
+.burger.show {
+    transform: translateX(0);
+}
+.burger:hover {
+    cursor: pointer;
+}
+.fa-solid {
+    display: none;
+    color: #795944;
+}
+i.show {
+    display: block;
+}
+ul.show {
+    position: fixed;
+    z-index: 8;
+    top: 5vh;
+    right: 5vw;
+}
+ul.show li a {
+    color: #795944;
+}
 .AboutMeSection {
     position: absolute;
     top: 16vh;
 }
 .AboutMeSection img {
     width: 100%;
-    height: 100vh;
-    
-    
+    height: 100vh;  
     position: absolute;
 }
 h1 {
@@ -114,10 +104,10 @@ h2 {
     text-align: center;
     margin-top: 15px;
 }
-pre {
-    margin-top: 50px;
-    margin-left: 15vw;
-    font-size: 18px;
+p {
+    margin-top: 8vh;
+    margin-left: 23vw;
+    font-size: 2rem;
 }
 .ContactSection {
     position: absolute;
@@ -133,6 +123,8 @@ h3 {
 }
 span {
     font-size: 1.5rem;
+    position: relative;
+    left: 24vw;
 }
 a {
     text-decoration: none;
@@ -163,10 +155,93 @@ a {
 }
 .Mail {
     position: relative;
-    left: 4.5vw;
+    left: 5.5vw;
 }
 .Mail span {
     position: relative;
-    top: -2vh;
+    bottom: 2vh;
     left: 6vw;
+}
+@media (orientation: portrait) and (min-width: 410px) {
+    .NaviSection img {
+        height: 10vh;
+    }
+    nav ul {
+        top: 6vh;
+    }
+    nav ul li a {
+        font-size: 1.1rem;
+        margin: 10px;
+    }
+    ul.show {
+        right: 17vw;
+    }
+    .AboutMeSection img {
+        width: 100%;
+        height: 35vh;  
+        position: absolute;
+    }
+    h1 {
+        top: 10vh;
+        left: 7vw;
+        font-size: 2.2rem;
+        width: 40vw;
+        padding: 9px;
+    }
+    .AboutMeSection p {
+        top: 40vh;
+        width: 95vw;
+        margin-left: 3vw;
+        font-size: 1.5rem;
+        color: black;
+    }
+    .AboutMeSection {
+        background-color: antiquewhite;
+        height: 103vh;
+    }
+    .MenuSection {
+        top: 119vh;
+    }
+    h2 {
+        text-decoration: underline 2px gold;
+        text-underline-offset: 10px;
+        text-align: center;
+        margin-top: 6vh;
+    }
+    p {
+        margin-top: 7vh;
+        margin-left: 15vw;
+        font-size: 1.2rem;
+    }
+    span {
+        left: 10vw;
+    }
+    .ContactSection {
+        height: 103vh;
+        top: 219vh;
+    }
+    .Insta img,.Fb  img {
+        height: 8vh;
+    }
+    .Insta span, .Fb span {
+        top: -3vh;
+    }
+    .Fb {
+        left: -1.5vw;
+        bottom: 7vh;
+    }
+    .Phone {
+        left: 5vw;
+        bottom: 14vh;
+    }
+    .Mail img {
+        position: relative;
+        bottom: 17vh;
+        left: 30vw;
+    }
+    .Mail span {
+        left: -7vw;
+        bottom: 12vh;
+    }
+    
 }
