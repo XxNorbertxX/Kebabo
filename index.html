@@ -3,32 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adam i Asia Kebab</title>
+    <title>CobraKebab - The best kebab in UK</title>
     <script src="https://kit.fontawesome.com/a3644dbae2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
-    <wrapper>
-        <section id="AboutMe" class="NaviSection">
-            <img src="Images/Logo Kebab 2JR.jpg" class="logo">
+    <div class="wrapper">       
+        <section id="NavigationMenu" class="NaviSection">
+            <img src="Images/Logo Kebab 2JR.jpg" class="logo">            
             <nav>
-                <div class="burger" id="Burger">
+                <div id="Burger" class="burger">
                     <i class="fa-solid fa-bars show"></i>
                     <i class="fa-solid fa-xmark"></i>
                 </div>
-                <ul>
-                    <li><a class="AboutMe" href="#">About me</a></li>
-                    <li><a class="Menu" href="#">Menu</a></li>
+                <ul>                    
+                    <li><a class="FoodMenu" href="#">Menu</a></li>
+                    <li><a class="AboutUs" href="#">About us</a></li>
                     <li><a class="Contact" href="#">Contact</a></li>
                 </ul>
             </nav>
         </section>
-        <section class="AboutMeSection">
+        <section id="AboutUs" class="AboutUsSection">
             <img src="Images/arabic-kebab-sandwich-wooden-flat-lay.jpg" alt="">
-            <h1>We just like food</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione enim iure accusantium, exercitationem doloribus aliquid, id, pariatur porro architecto quisquam voluptatum quae at optio consequatur accusamus modi? Possimus, cum rem. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, voluptatum! Ipsum itaque optio hic molestiae quae accusamus quos repudiandae sint ut ea iste, facilis quo sequi repellat dolorem vel ratione.</p>
+            <div class="SeeMenuBorder">
+                <h2>
+                    CobraKebab<br>
+                    Best kebab in Corby<br><br>
+                </h2><br>
+                <p>
+                    Kebab is one of the most frequently chosen fast foods by Poles, 
+                    which is why we have created a place where you will find your favorite one 
+                    and you will keep coming back for it! Crispy salads, juicy meat 
+                    and sauces make up the perfect kebab you are looking for!                
+                </p><br><br>
+                <p>
+                    Check out our menu, where you will surely find a delicious dish for yourself, and order it delivered to your door.
+                </p><br><br>
+                <a href="#"  class="SeeMenu">See menu<br></a>
+            </div>
         </section>
-        <section id="Menu" class="MenuSection">
+        <section id="FoodMenu" class="FoodMenuSection">
             <h2>Menu</h2>
             <p>Kebab w picie .................<span>100Gbp</span></p>
             <p>Kebab in potato ...............<span>200Gbp</span></p>
@@ -42,9 +56,12 @@
             <div class="Insta"><a href=""><img src="Images/Insta ico gold.png" alt=""><span>Kebab Adam</span></a></div>
             <div class="Fb"><a href=""><img src="Images/facebook gold.png" alt=""><span>Kebab Asia</span></a></div>
             <div class="Phone"><a href=""><img src="Images/contact2 golg.png" alt=""><span>+44 007 007 007</span></a></div>
-            <div class="Mail"><a href=""><img src="Images/mail gold.png" alt=""><span>Kebab@AdamiAsia.gmail.com</span></a></div>
-        </section>
-    </wrapper>
+            <div class="Mail"><a href=""><img src="Images/mail gold.png" alt=""><span>Kebab@AdamiAsia.gmail.com</span></a></div>            
+        </section>               
+    </div>   
+    <div class="backToTopSite">
+        <button onclick="topFunction()" id="backToTopBtn" title="Go to top">Top</button> 
+    </div>     
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="Script.js"></script>
 </body>

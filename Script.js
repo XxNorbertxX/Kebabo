@@ -11,18 +11,46 @@ const iconBurger = document.querySelector(".fa-bars");
 const iconX = document.querySelector(".fa-xmark");
 const column = document.querySelector("ul");
 
+const seeMenu = document.querySelector(".SeeMenu");
+
+seeMenu.addEventListener("click", function() {
+    const goToSection = "#FoodMenu";
+    $('body, html').animate({
+        scrollTop: $(goToSection).offset().top
+    })
+})
+
+var burgerIsClicked = false;
+let backToTopButton = this.document.getElementById("backToTopBtn");
+backToTopButton.style.display = "none";
 burger.addEventListener("click", function() {
     iconBurger.classList.toggle("show");
     iconX.classList.toggle("show");
     column.classList.toggle("show");
+    burgerIsClicked = true;
 })
 
 window.addEventListener('scroll', function() {
     const menu = this.document.getElementById("Burger");
     if (this.window.scrollY > 140) {
         menu.classList.add("show");
+        backToTopButton.style.display = "block";
     } else {
-        menu.classList.remove("show");
+        backToTopButton.style.display = "none";
+        if (burgerIsClicked) { menu.click(); burgerIsClicked = false; }
+        menu.classList.remove("show");        
     }
 })
+
+
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  //document.body.scrollTop = 0; // For Safari
+  //document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  const goToSection = "#NavigationMenu";
+  $('body, html').animate({
+      scrollTop: $(goToSection).offset().top
+  })
+}
  
