@@ -2,10 +2,17 @@
     margin: 0;
     padding: 0;
 }
+div.wrapper {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
 section {
     width: 100%;
     height: 100vh;    
 }
+/*Nawigacja*/
 section.NaviSection { 
     display: flex;
     position: absolute;
@@ -64,6 +71,7 @@ ul.show {
 ul.show li a {
     color: #795944;
 }
+/*About us*/
 section.AboutUsSection {
     position: relative;
     top: 16vh;
@@ -73,45 +81,33 @@ section.AboutUsSection img {
     width: 100%;
     position: absolute;
 }
-section.AboutUsSection div {
+.SeeMenuBorder {
     position: relative;
-    top: 1vh;
+    top: 4vh;
+    left: 5vw;
+    width: 90vw;
+    height: 91vh;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+h1 {
+    position: relative;
+    top: 5vh;
+    text-align: center;
+    color:rgb(201, 147, 48)
 }
 section.AboutUsSection p {
     position: relative;
     width: 80vw;
+    top: 15vh;
     left: 8vw;
     font-size: 20px;
     color: rgb(7, 202, 186);
     text-align: center;
 }
-section.AboutUsSection h2 {
-    color:rgb(201, 147, 48)
-}
-a.SeeMenu{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: 73vh;
-    right: -45vw;
-    width: 8vw;
-    color: #eb8f00;
-    text-decoration: none;
-    padding: 5px 0px 5px 0px;
-    border-radius: 5px;
-    border: 1px solid rgb(204, 35, 35);
-    background-color: green;
-}
-a.SeeMenu:hover{
-    background-color: rgb(119, 245, 119);
-}
-div.SeeMenuBorder{
-    height: 96vh;
-    border: 1px solid white;
-    border-radius: 5px;
-}
 .slider {
-    left: 2vw;
+    position: relative;
+    top: 35vh;
     width: 95%;
     height: 15vh;
     overflow: hidden;
@@ -129,6 +125,8 @@ section.AboutUsSection div.slider img {
     left: 100%;
     width: 10vw;
     height: 15vh;
+    opacity: 0.8;
+    border-radius: 25%;
     animation: autoRun 20s linear infinite;
     animation-delay: calc((20s / 9) * (var(--position) - 1));
 }
@@ -147,6 +145,24 @@ section.AboutUsSection div.slider img {
 .slider img:hover {
     filter: grayscale(0);
 }
+.SeeMenu{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 68vh;
+    right: -40vw;
+    width: 8vw;
+    color: #eb8f00;
+    text-decoration: none;
+    padding: 5px 0px 5px 0px;
+    border-radius: 5px;
+    border: 1px solid rgb(204, 35, 35);
+    background-color: green;
+}
+.SeeMenu:hover{
+    background-color: rgb(119, 245, 119);
+}
+/*Menu*/
 .FoodMenuSection {
     top: 116vh;
     position: absolute;
@@ -162,6 +178,7 @@ section.FoodMenuSection p {
     margin-left: 23vw;
     font-size: 2rem;
 }
+/*Contact*/
 .ContactSection {
     position: absolute;
     top: 216vh;
@@ -174,14 +191,14 @@ section.FoodMenuSection p {
 h3 {
     font-size: 2rem;
 }
+a {
+    text-decoration: none;
+    color: black;
+}
 span {
     font-size: 1.5rem;
     position: relative;
     left: 24vw;
-}
-a {
-    text-decoration: none;
-    color: black;
 }
 .Insta span {
     position: relative;
@@ -235,13 +252,6 @@ div.backToTopSite {
 }
 #backToTopBtn:hover {
 background-color: #555;
-}
-div.wrapper
-{
-    position: relative;
-    left: 0px;
-    top: 0px;
-    z-index: 1;
 }
 @media (orientation: portrait) and (min-width: 370px) {
     .NaviSection img {
