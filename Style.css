@@ -65,18 +65,19 @@ ul.show li a {
     color: #795944;
 }
 
-section.AboutUsSection {
+section.IntroSection {
     position: absolute;
     top: 15vh;
+    background-color: black;
 }
 
-section.AboutUsSection img {
+section.IntroSection img {
     width: 100%;
     height: auto;  
     position: absolute;
 }
 
-section.AboutUsSection div {
+section.IntroSection div {
     position: absolute;
     top: 15vh;
     margin-left: auto;
@@ -85,27 +86,66 @@ section.AboutUsSection div {
     right: 5vw;
 }
 
-section.AboutUsSection p {
+section.IntroSection p {
     font-size: 20px;
-    color: rgb(7, 202, 186);
+    color: burlywood;
     text-align: center;
 }
 
-section.AboutUsSection h2 {
+section.IntroSection h2 {
     color:rgb(201, 147, 48)
+}
+
+section.IntroSection p.SeeMenuHeader {
+    text-decoration: underline 2px gold;
+    text-underline-offset: 5px;
+}
+
+section.AboutUsSection {
+    position: absolute;
+    top: 216vh;
+    background-color: black;
+    text-align: center;
+    height: auto;
+}
+
+section.AboutUsSection p {
+    font-size: 20px;
+    color: burlywood;
+    text-align: center;
+    margin: 5vh;
+}
+
+.centerDiv {
+    display: flex;   
+    justify-content: center;
+    margin: 3vh;
+}
+
+section.AboutUsSection div.flipBox div {   
+    font-size: 20px;
+    color: burlywood;
+    margin: 5vh;
+    border: 1px solid burlywood;
+    width: 40vh;
+    height: 25vh;
+    word-wrap: break-word;    
+    text-align: center;
+    display: flex;
+    align-items:center;
 }
 
 a.SeeMenu{
     top: 100%;
     left: 50%;
-    color: #eb8f00;
+    color:gold;
     text-decoration: none;
     position: absolute;
     margin-right: -50%;
     transform: translate(-50%, -50%);
     padding: 5px 30px 5px 30px;
-    border: 1px solid rgb(204, 35, 35);
-    background-color: green;
+    border: 1px solid burlywood;
+    /*background-color: green;*/
 }
 
 a.SeeMenu:hover{
@@ -117,12 +157,13 @@ a.SeeMenu:hover{
     margin-right: -50%;
     transform: translate(-50%, -50%);
     padding: 5px 30px 5px 30px;
-    border: 1px solid rgb(204, 35, 35);
-    background-color: rgb(119, 245, 119);
+    /*border: 1px solid rgb(204, 35, 35);*/
+    background-color: green;
 }
 
 div.SeeMenuBorder{
-    border: 1px solid white;
+    /*border: 1px solid rgb(143, 8, 8);*/
+    width: 40%;
 }
 
 .FoodMenuSection {
@@ -142,18 +183,32 @@ section.FoodMenuSection p {
     font-size: 2rem;
 }
 .ContactSection {
+    background-color: black;
     position: absolute;
-    top: 216vh;
+    top: 290vh;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    height: auto;    
+    /*justify-content: space-around;*/
 }
+
+section.ContactSection div.centerDiv div {
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items:center;
+    margin: 1vh;
+    font-size: 20px;
+}
+
 h3 {
     font-size: 2rem;
+    color: red;
+    margin-top: 15px;
 }
-span {
+.FoodMenuSection span {
     font-size: 1.5rem;
     position: relative;
     left: 24vw;
@@ -162,37 +217,40 @@ a {
     text-decoration: none;
     color: black;
 }
+
 .Insta span {
-    position: relative;
-    top: -7vh;
-    left: 4vw;
+    color: burlywood;
 }
-.Fb {
-    position: relative;
-    left: -0.5vw;
+
+.Insta img {
+    vertical-align: middle;
+    margin-right: 1vh;
+    max-height: 50px;
+    min-width: 50px;
 }
+
 .Fb span {
-    position: relative;
-    top: -7vh;
-    left: 4vw;
+    color: burlywood;
 }
-.Phone {
-    position: relative;
-    left: 1vw;
+.Fb img {
+    vertical-align: middle;
+    margin-right: 1vh;
+    max-height: 50px;
+    min-width: 50px;    
 }
-.Phone span {
-    position: relative;
-    top: -2vh;
-    left: 6.5vw;
-}
+
 .Mail {
-    position: relative;
-    left: 5.5vw;
+    margin-top: 1vh;
+    margin-bottom: 5vh;
 }
+
+.Mail img {
+    vertical-align: middle;
+    margin-right: 1vh;
+}
+
 .Mail span {
-    position: relative;
-    bottom: 2vh;
-    left: 6vw;
+    color: burlywood;
 }
 
 div.backToTopSite {
@@ -223,6 +281,21 @@ div.wrapper
     left: 0px;
     top: 0px;
     z-index: 1;
+}
+
+span.email {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+
+span.email:before {
+    content: attr(data-website) "\0040" attr(data-user);
+    unicode-bidi: bidi-override;
+    direction: rtl;   
 }
 
 @media (orientation: portrait) and (min-width: 370px) {

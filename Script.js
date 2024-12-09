@@ -54,3 +54,16 @@ function topFunction() {
   })
 }
  
+var encEmail = "S2ViYWJAQWRhbWlBc2lhLmdtYWlsLmNvbQ==";
+const form = document.getElementById("MailLink");
+form.setAttribute("href", "mailto:".concat(atob(encEmail)));
+
+function rot13(str) {
+    return str.replace(/[a-zA-Z]/g, function(c) {
+      return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+    });
+  }
+
+  const mailspan = document.getElementById("MailSpan");
+  mailspan.setAttribute("data-website", rot13(mailspan.getAttribute("data-website"))); 
+  mailspan.setAttribute("data-user", rot13(mailspan.getAttribute("data-user"))); 
