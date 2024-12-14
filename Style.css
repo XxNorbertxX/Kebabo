@@ -283,8 +283,18 @@ a {
 
 .Mail span {
     color: burlywood;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
 }
-
+span.email:before {
+    content: attr(data-website) "\0040" attr(data-user);
+    unicode-bidi: bidi-override;
+    direction: rtl;   
+}
 div.backToTopSite {
     position: fixed;
     bottom: 20px;
@@ -304,21 +314,6 @@ div.backToTopSite {
 }
 #backToTopBtn:hover {
 background-color: #555;
-}
-
-span.email {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; 
-}
-
-span.email:before {
-    content: attr(data-website) "\0040" attr(data-user);
-    unicode-bidi: bidi-override;
-    direction: rtl;   
 }
 
 @media (orientation: portrait) and (min-width: 370px) {
