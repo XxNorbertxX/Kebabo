@@ -1,5 +1,5 @@
 $('section nav ul li a').on('click', function() {
-    const goToSection = "#" + $(this).attr('class');
+    const goToSection = "#" + $(this).attr('class').replace("Link","") + "Id";
     $('body, html').animate({
         scrollTop: $(goToSection).offset().top
     })
@@ -14,7 +14,7 @@ const column = document.querySelector("ul");
 const seeMenu = document.querySelector(".SeeMenu");
 
 seeMenu.addEventListener("click", function() {
-    const goToSection = "#FoodMenu";
+    const goToSection = "#FoodMenuId";
     $('body, html').animate({
         scrollTop: $(goToSection).offset().top
     })
@@ -55,7 +55,7 @@ function topFunction() {
 }
  
 var encEmail = "S2ViYWJAQWRhbWlBc2lhLmdtYWlsLmNvbQ==";
-const form = document.getElementById("MailLink");
+const form = document.getElementById("EmailLinkId");
 form.setAttribute("href", "mailto:".concat(atob(encEmail)));
 
 function rot13(str) {
@@ -64,7 +64,7 @@ function rot13(str) {
     });
   }
 
-  const mailspan = document.getElementById("MailSpan");
+  const mailspan = document.getElementById("EmailSpanId");
   mailspan.setAttribute("data-website", rot13(mailspan.getAttribute("data-website"))); 
   mailspan.setAttribute("data-user", rot13(mailspan.getAttribute("data-user"))); 
 
