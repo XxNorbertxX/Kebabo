@@ -67,3 +67,13 @@ function rot13(str) {
   const mailspan = document.getElementById("MailSpan");
   mailspan.setAttribute("data-website", rot13(mailspan.getAttribute("data-website"))); 
   mailspan.setAttribute("data-user", rot13(mailspan.getAttribute("data-user"))); 
+
+  let counter = 1;
+  setInterval(function(){
+    document.getElementById('radio'+counter).checked = true;
+    counter++;
+
+    if(counter>4){
+        counter = 1;
+    }
+  },6000)

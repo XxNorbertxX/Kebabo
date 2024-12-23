@@ -76,6 +76,9 @@ section.IntroSection {
     position: relative;
     top: 15vh;
     background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 section.IntroSection p {
@@ -85,18 +88,18 @@ section.IntroSection p {
 }
 
 section.IntroSection p.SeeMenuHeader {
+    position: relative;
+    top: -5vh;
     text-decoration: underline 2px gold;
     text-underline-offset: 5px;
 }
 
 section.IntroSection div.SeeMenuBorder {
     position: relative;
-    top: 5vh;
+    top: -25vh;
     margin-left: auto;
     margin-right: auto;
-    left: 5vw;
-    right: 5vw;
-    width: 40%;
+    width: 72%;
     margin-bottom: 10vh;
 }
 
@@ -141,71 +144,108 @@ section.AboutUsSection p {
     text-align: center;
     margin: 5vh;
 }
-.slider {    
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-    min-height: 15vh;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(
-        to right, transparent, #000 10% 90%, transparent
-    );
-    mask-image: linear-gradient(
-        to right, transparent, #000 10% 90%, transparent
-    );
-    margin-bottom: 5vh;
-}
-ul li.item {
-    position: relative;
-    display: contents;
-    width: 10vw;
-}
-div.slider img {
-    position: absolute;
-    left: 100%;
-    width: 10vw;
-    height: 15vh;
-    opacity: 0.8;
-    border-radius: 25%;
-    animation: autoRun 20s linear infinite;
-    animation-delay: calc((20s / 9) * (var(--position) - 1));
-}
-@keyframes autoRun {
-    from{
-        left: 100%;
-    } to {
-        left: calc((100%) * -1);
-    }
-}
-.slider:hover img {
-    animation-play-state: paused!important;
-    cursor: pointer;
-    filter: grayscale(1);
-}
-.slider img:hover {
-    filter: grayscale(0);
-}
 .SeeMenu{
-    top: 100%;
-    left: 50%;
+    top: 84vh;
+    left: 45%;
     color:gold;
     text-decoration: none;
     position: absolute;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
     padding: 5px 30px 5px 30px;
     border: 1px solid burlywood;
 }
 .SeeMenu:hover{
     background-color: rgb(119, 245, 119);
 }
-
+.slider-wrapper {
+    position: absolute;
+    top: 43vh;
+    width: 800px;
+    height: 422px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.slider {
+    width: 500%;
+    height: 422px;
+    display: flex;
+}
+.slider input {
+    display: none;
+}
+.slide {
+    width: 20%;
+    transition: 2s;
+}
+.slide img {
+    width: 800px;
+    height: 422px;
+}
+.navigation-manual {
+    position: absolute;
+    width: 800px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+.manual-btn {
+    border: 2px solid #ccc;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+.manual-btn:hover {
+    background-color: #ccc;
+}
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+#radio2:checked ~ .first {
+    margin-left: -20%;
+}
+#radio3:checked ~ .first {
+    margin-left: -40%;
+}
+#radio4:checked ~ .first {
+    margin-left: -60%;
+}
 .FoodMenuSection {
     position: relative;
     background-color: #d2c1af;
     height: auto;
     width: auto;
+    top: 15vh;
+}
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    width: 800px;
+    justify-content: center;
+    margin-top: 382px;
+}
+.navigation-auto div {
+    border: 2px solid #333;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+.navigation-auto div:not(:last-child) {
+    margin-right: 40px;
+}
+#radio1:checked ~.navigation-auto .auto-btn-1 {
+    background-color: #ccc;
+}
+#radio2:checked ~.navigation-auto .auto-btn-2 {
+    background-color: #ccc;
+}
+#radio3:checked ~.navigation-auto .auto-btn-3 {
+    background-color: #ccc;
+}
+#radio4:checked ~.navigation-auto .auto-btn-4 {
+    background-color: #ccc;
 }
 h2 {
     text-decoration: underline 2px gold;

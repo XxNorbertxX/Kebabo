@@ -40,18 +40,34 @@
                 </p><br><br>
                 <a href="#"  class="SeeMenu">Go to menu<br></a>
             </div>
-            <div class="slider">
-                <ul>
-                    <li class="item" style="--position: 1"><img src="Images/slider1.jpg" alt=""></li>
-                    <li class="item" style="--position: 2"><img src="Images/slider2.jpg" alt=""></li>
-                    <li class="item" style="--position: 3"><img src="Images/slider3.jpg" alt=""></li>
-                    <li class="item" style="--position: 4"><img src="Images/slider4.jpg" alt=""></li>
-                    <li class="item" style="--position: 5"><img src="Images/slider5.jpg" alt=""></li>
-                    <li class="item" style="--position: 6"><img src="Images/slider6.jpg" alt=""></li>
-                    <li class="item" style="--position: 7"><img src="Images/slider7.jpg" alt=""></li>
-                    <li class="item" style="--position: 8"><img src="Images/slider8.jpg" alt=""></li>
-                    <li class="item" style="--position: 9"><img src="Images/slider9.jpg" alt=""></li>
-            </div>            
+                <div class="slider-wrapper">
+                    <div class="slider">
+                        <input type="radio" name="radio-btn" id="radio1">
+                        <input type="radio" name="radio-btn" id="radio2">
+                        <input type="radio" name="radio-btn" id="radio3">
+                        <input type="radio" name="radio-btn" id="radio4">
+                        <div class="slide first"><img id="slide-1" src="Images/slider1.jpg" alt="">
+                        </div>
+                        <div class="slide"><img id="slide-2" src="Images/slider2.jpg" alt="">
+                        </div>
+                        <div class="slide"><img id="slide-3" src="Images/slider3.jpg" alt="">
+                        </div>
+                        <div class="slide"><img id="slide-4" src="Images/slider4.jpg" alt="">
+                        </div>
+                        <div class="navigation-auto">
+                            <div class="auto-btn-1"></div>
+                            <div class="auto-btn-2"></div>
+                            <div class="auto-btn-3"></div>
+                            <div class="auto-btn-4"></div>
+                        </div>
+                    </div>
+                    <div class="navigation-manual">
+                        <label for="radio1" class="manual-btn"></label>
+                        <label for="radio2" class="manual-btn"></label>
+                        <label for="radio3" class="manual-btn"></label>
+                        <label for="radio4" class="manual-btn"></label>
+                    </div>
+                </div>            
         </section>
         <section id="FoodMenu" class="FoodMenuSection">
             <h2>Menu</h2>
