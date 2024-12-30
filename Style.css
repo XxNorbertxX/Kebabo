@@ -111,6 +111,7 @@ section.IntroSection div.SeeMenuBorder {
 
 section.AboutUs {
     position: relative;
+    top: 15vh;
     background-color: black;
     text-align: center;
     height: auto;
@@ -207,12 +208,40 @@ section.AboutUs .AboutUsDescription p {
 #radio4:checked ~ .first {
     margin-left: -60%;
 }
-.FoodMenuSection {
+
+.FoodMenu {
     position: relative;
     background-color: #d2c1af;
-    height: auto;
-    width: auto;
     top: 15vh;
+}
+h2 {
+    position: relative;
+    top: 2vh;
+    display: flex;
+    justify-content: center;
+}
+.FoodMenu div {
+    height: 20vh;
+}
+.active p {
+    left: 20vw;
+}
+.FoodMenu div img {
+    position: relative;
+    left: 9vw;
+    height: 20vh;
+}
+.FoodMenu .wrap, .FoodMenu .pita {
+    transform: translateX(-100vw);
+}
+.FoodMenu .tortilla, .FoodMenu .bread {
+    transform: translateX(250vw);
+}
+.FoodMenu div {
+    transition: 1s;
+}
+.FoodMenu .wrap.activee, .FoodMenu .tortilla.activee, .FoodMenu .pita.activee, .FoodMenu .bread.activee {
+    transform: translateX(0);
 }
 .navigation-auto {
     position: absolute;
@@ -244,9 +273,12 @@ section.AboutUs .AboutUsDescription p {
 }
 
 section.FoodMenu p {
+    position: relative;
+    top: 12vh;
     margin-top: 3vh;
-    text-align: center;
     font-size: 2rem;
+    width: 26vw;
+    left: 70vw;
 }
 /*Contact*/
 .Contact {

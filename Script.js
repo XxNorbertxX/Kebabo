@@ -77,3 +77,40 @@ function rot13(str) {
         counter = 1;
     }
   },6000)
+
+  $(document).on('scroll', function() {
+    const windowHeight = $(window).height();
+    const scrollValue = $(this).scrollTop();
+
+    const $wrap = $('.wrap');
+    const wrapFromTop = $wrap.offset().top
+    const wrapHeight = $wrap.outerHeight()
+    
+    const $tortilla = $('.tortilla');
+    const tortillaFromTop = $tortilla.offset().top
+    const tortillaHeight = $tortilla.outerHeight()
+
+    const $pita = $('.pita');
+    const pitaFromTop = $pita.offset().top
+    const pitaHeight = $pita.outerHeight()
+
+    const $bread = $('.bread');
+    const breadFromTop = $bread.offset().top
+    const breadHeight = $bread.outerHeight()
+
+    if (scrollValue > wrapFromTop + wrapHeight - windowHeight) {
+        $wrap.addClass('activee');
+    }
+    if (scrollValue> tortillaFromTop + tortillaHeight - windowHeight) {
+        $tortilla.addClass('activee');
+    }
+    if (scrollValue> pitaFromTop + pitaHeight - windowHeight) {
+        $pita.addClass('activee');
+    }
+    if (scrollValue> breadFromTop + breadHeight - windowHeight) {
+        $bread.addClass('activee');
+    }
+    if (scrollValue < 100) {
+        $('div').removeClass('activee');
+    }
+  })
