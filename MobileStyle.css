@@ -1,0 +1,89 @@
+@media (orientation: portrait) and (min-width: 370px) {
+    .NaviSection img {
+        height: 10vh;
+    }
+    nav ul {
+        top: 6vh;
+    }
+    nav ul li a {
+        font-size: 1.1rem;
+        margin: 10px;
+    }
+    ul.show {
+        right: 17vw;
+    }
+    .AboutUsSection img {
+        width: 100%;
+        height: 35vh;  
+        position: absolute;
+    }
+    h1 {
+        top: 10vh;
+        left: 7vw;
+        font-size: 2.2rem;
+        width: 40vw;
+        padding: 9px;
+    }
+    .AboutUsSection p {
+        top: 40vh;
+        width: 95vw;
+        margin-left: 3vw;
+        font-size: 1.5rem;
+        color: black;
+    }
+    .AboutUsSection {
+        background-color: antiquewhite;
+        height: 103vh;
+    }
+    .FoodMenuSection {
+        top: 119vh;
+    }
+    h2 {
+        text-decoration: underline 2px gold;
+        text-underline-offset: 10px;
+        text-align: center;
+        margin-top: 6vh;
+    }
+    p {
+        margin-top: 7vh;
+        margin-left: 11vw;
+        font-size: 1.2rem;
+    }
+    span {
+        left: 8vw;
+    }
+    .ContactSection {
+        top: 219vh;
+    }
+    .Insta {
+        position: relative;
+        bottom: 3vh;
+    }
+    .Insta img,.Fb  img {
+        height: 8vh;
+    }
+    .Insta span, .Fb span {
+        top: -3vh;
+    }
+    .Fb {
+        left: -1.5vw;
+        bottom: 10vh;
+    }
+    .Phone {
+        left: 5vw;
+        bottom: 16vh;
+    }
+    .Mail {
+        left: 2.5vw;
+    }
+    .Mail img {
+        position: relative;
+        bottom: 21vh;
+        left: 37vw;
+    }
+    .Mail span {
+        left: -7vw;
+        bottom: 14vh;
+    }
+    
+}
