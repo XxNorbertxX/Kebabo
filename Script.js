@@ -121,6 +121,6 @@ $(document).on('scroll', function() {
         $bread.addClass('flow');        
     }
     if (scrollValue < 100) {
-        $('.foodMenu .foodMenuWrapper div').removeClass('flow');    
+        $('.foodMenu .foodMenuItems div').removeClass('flow');    
     }
 })
