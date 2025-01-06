@@ -293,6 +293,8 @@ ul.show li a {
     position: relative;
     text-align: center;
     height: auto;
+
+    border-bottom:1.5px solid tan;
 }
 
 .foodMenu p {
@@ -334,6 +336,22 @@ ul.show li a {
     transform: translateX(0);
 }
 
+.wrap.flow {
+    position: relative;
+    right: 19vw;
+}
+.tortilla.flow {
+    position: relative;
+    left: 26vw;
+}
+.pita.flow {
+    position: relative;
+    right: 19vw;
+}
+.bread.flow {
+    position: relative;
+    left: 26vw;
+}
 /** AboutUs Section **/
 
 .aboutUs {
