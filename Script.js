@@ -14,7 +14,7 @@ let counter = 1;
 /* Initialize */ 
 
 backToTopButton.style.display = "none";
-
+document.getElementById('radio1').checked = true;
 setInterval(
     function()
     {

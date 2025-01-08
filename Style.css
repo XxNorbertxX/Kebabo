@@ -203,16 +203,16 @@ ul.show li a {
 
 .sliderWrapper {
     position: relative;
-    width: 800px;
+    width: 1200px;
     height: 422px;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 7vh;
 }
 .slider {
-    width: 500%;
+    width: 370%;
     height: 422px;
-    display: flex;
+    display: flex; 
 }
 .slider input {
     display: none;
@@ -220,14 +220,16 @@ ul.show li a {
 .slide {
     width: 20%;
     transition: 2s;
+    text-align: center;  
 }
 .slide img {
     width: 800px;
     height: 422px;
+
 }
 .navigation-manual {
     position: absolute;
-    width: 800px;
+    width: 1200px;
     margin-top: -40px;
     display: flex;
     justify-content: center;
@@ -246,22 +248,22 @@ ul.show li a {
     background-color: #ccc;
 }
 #radio1:checked ~ .first {
-    margin-left: 0;
+    margin-left: 3.5%;
 }
 #radio2:checked ~ .first {
-    margin-left: -20%;
+    margin-left: -16.5%;
 }
 #radio3:checked ~ .first {
-    margin-left: -40%;
+    margin-left: -36.5%;
 }
 #radio4:checked ~ .first {
-    margin-left: -60%;
+    margin-left: -56.5%;
 }
 
 .navigation-auto {
     position: absolute;
     display: flex;
-    width: 800px;
+    width: 1200px;
     justify-content: center;
     margin-top: 382px;
 }
