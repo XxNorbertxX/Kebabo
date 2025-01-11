@@ -8,6 +8,12 @@ const goToMenu = document.querySelector(".goToMenu");
 var burgerIsClicked = false;
 let backToTopButton = this.document.getElementById("backToTopId");
 let counter = 1;
+let counterFoodMenuItem = 1;
+const halfScreen = window.innerHeight/2;
+const foodMenu = this.document.getElementById("foodMenuId");
+let intervalId;
+let intervalFoodMenuItem;
+let foodMenuItemWithInterval;
 
 /** JS **/
 
@@ -15,7 +21,7 @@ let counter = 1;
 
 backToTopButton.style.display = "none";
 document.getElementById('radio1').checked = true;
-setInterval(
+intervalId = setInterval(
     function()
     {
         document.getElementById('radio' + counter).checked = true;
@@ -51,6 +57,27 @@ window.addEventListener('scroll', function() {
         if (burgerIsClicked) { menu.click(); burgerIsClicked = false; }
         menu.classList.remove("show");        
     }
+    
+    let foodMenuItems = foodMenu.querySelectorAll('.foodMenuItem');
+    foodMenuItems.forEach(foodMenuItem => {
+        let foodMenuItemBoundingDetails = foodMenuItem.getBoundingClientRect();
+        let foodMenuItemStartPointY = foodMenuItemBoundingDetails["y"];
+        /*alert("name: " + foodMenuItem.className + "\n" + "entrypoint: " + foodMenuItemStartPointY + "\n" + "halfscreen: " + halfScreen);*/
+        if (foodMenuItemWithInterval==null && foodMenuItemStartPointY < halfScreen && foodMenuItemStartPointY >= 0)
+        {         
+            setIntervalFoodMenuItem();
+            foodMenuItemWithInterval = foodMenuItem;
+        }
+        else
+        {
+            if (foodMenuItemWithInterval == foodMenuItem && (foodMenuItemStartPointY < 0 || foodMenuItemStartPointY > halfScreen))
+            {
+                clearInterval(intervalFoodMenuItem);
+                foodMenuItemWithInterval = null;
+                counterFoodMenuItem = 1;
+            }
+        }
+    });
 })
 
 /** Functions **/
@@ -60,6 +87,22 @@ function topFunction() {
     $('body, html').animate({
         scrollTop: $(goToSection).offset().top
     })
+}
+
+function setIntervalFoodMenuItem()
+{
+    intervalFoodMenuItem = setInterval(
+        function()
+        {            
+            foodMenuItemWithInterval.querySelector('.ItemImages #ItemImage' + counterFoodMenuItem).style.display = "none";
+            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["font-weight"]="normal";
+            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["font-weight"]="normal";  
+            if (counterFoodMenuItem == this.document.getElementById("foodMenuId").children.length - 1) { counterFoodMenuItem = 1; }
+            else counterFoodMenuItem++;            
+            foodMenuItemWithInterval.querySelector('.ItemImages #ItemImage' + counterFoodMenuItem).style.display = "inline-block";
+            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["font-weight"]="bolder"; 
+            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["font-weight"]="bolder";           
+        },3000)
 }
 
 /* Email Functions */

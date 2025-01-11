@@ -361,10 +361,13 @@ ul.show li a {
     font-size: x-large;
     vertical-align: middle;
     border:1.5px solid rgb(148, 210, 140);
+    font-style: normal;
+    font-weight: normal;
 }
 
 .ItemDetails {
     font-style: italic;
+    font-weight: normal;
     vertical-align: middle;
     border:1.5px solid rgb(235, 221, 29);
 }
@@ -379,11 +382,8 @@ ul.show li a {
     visibility: hidden;
     animation: fromLeftToRight 2s 1s;
     animation-fill-mode: both;
-    margin: 30px;
-}
-
-.foodMenu div img {
-    display: inline-block;
+    /*margin: 30px;*/
+    margin-top: 10px;
 }
 
 .foodMenu div:nth-child(2n+1){
@@ -406,14 +406,24 @@ ul.show li a {
 .foodMenu .wrap, .foodMenu .tortilla, .foodMenu .pita, .foodMenu .bread {
     /*transition: 1s;*/
     height: 50vh;
-    border:1.5px solid rgb(173, 41, 107);
+    border:1.5px solid rgb(41, 163, 17);
     overflow: hidden;    
 }
 
-.foodMenu .wrap img,.foodMenu .tortilla img,.foodMenu .pita img,.foodMenu .bread img {
+.ItemImages {
+    display: inline-block;
+    border:1.5px solid rgb(189, 19, 19);
+    height: inherit;
+}
+
+.foodMenu .wrap div img:not(:first-child), .foodMenu .tortilla div img:not(:first-child), .foodMenu .pita div img:not(:first-child), .foodMenu .bread div img:not(:first-child) {
+    display: none;
+}
+
+.foodMenu .wrap div img,.foodMenu .tortilla div img,.foodMenu .pita div img,.foodMenu .bread div img {
     /*position: relative;
     left: 9vw;
-    height: 20vh;*/
+    height: 20vh;*/  
     border:1.5px solid rgb(81, 41, 173);
     vertical-align: middle;
     animation: fadein 2s;
