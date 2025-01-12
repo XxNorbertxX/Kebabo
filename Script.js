@@ -8,7 +8,7 @@ const goToMenu = document.querySelector(".goToMenu");
 var burgerIsClicked = false;
 let backToTopButton = this.document.getElementById("backToTopId");
 let counter = 1;
-let counterFoodMenuItem = 1;
+let currentCounterFoodMenuItem = 0;
 const halfScreen = window.innerHeight/2;
 const foodMenu = this.document.getElementById("foodMenuId");
 let intervalId;
@@ -74,12 +74,13 @@ window.addEventListener('scroll', function() {
                 if (foodMenuItemWithInterval == foodMenuItem && (foodMenuItemStartPointY < 0 || foodMenuItemStartPointY > halfScreen))
                 {
                     clearInterval(intervalFoodMenuItem);
-                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["font-weight"]="normal";
-                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["font-weight"]="normal";  
-                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["color"]="tan";
-                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["color"]="tan"; 
+                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + currentCounterFoodMenuItem).style["font-weight"]="normal";
+                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + currentCounterFoodMenuItem).style["font-weight"]="normal";  
+                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + currentCounterFoodMenuItem).style["color"]="tan";
+                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + currentCounterFoodMenuItem).style["color"]="tan"; 
                     foodMenuItemWithInterval = null;
-                    counterFoodMenuItem = 1;
+                    currentCounterFoodMenuItem = 0;
+                    nextCounterFoodMenuItem = 1;
                 }
             }
         });
@@ -97,21 +98,36 @@ function topFunction() {
 
 function setIntervalFoodMenuItem()
 {
+    let nextCounterFoodMenuItem = 1;
     intervalFoodMenuItem = setInterval(
         function()
-        {            
-            foodMenuItemWithInterval.querySelector('.ItemImages #ItemImage' + counterFoodMenuItem).style.display = "none";
-            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["font-weight"]="normal";
-            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["font-weight"]="normal";  
-            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["color"]="tan";
-            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["color"]="tan";      
-            if (counterFoodMenuItem == this.document.getElementById("foodMenuId").children.length - 1) { counterFoodMenuItem = 1; }
-            else counterFoodMenuItem++;            
-            foodMenuItemWithInterval.querySelector('.ItemImages #ItemImage' + counterFoodMenuItem).style.display = "inline-block";
-            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["font-weight"]="bolder"; 
-            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["font-weight"]="bolder";
-            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["color"]="gold";   
-            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["color"]="gold";         
+        {
+            foodMenuItemWithInterval.querySelectorAll('.ItemImages > *').forEach(image => { image.style.display = "none"; });
+            if (currentCounterFoodMenuItem != this.document.getElementById("foodMenuId").children.length - 1 && nextCounterFoodMenuItem == 1)
+            {
+                foodMenuItemWithInterval.querySelector('.ItemImages #ItemImage' + nextCounterFoodMenuItem).style.display = "inline-block";
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + nextCounterFoodMenuItem).style["font-weight"]="bolder"; 
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + nextCounterFoodMenuItem).style["font-weight"]="bolder";
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + nextCounterFoodMenuItem).style["color"]="gold";   
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + nextCounterFoodMenuItem).style["color"]="gold";                
+            }
+            else
+            {
+                foodMenuItemWithInterval.querySelector('.ItemImages #ItemImage' + currentCounterFoodMenuItem).style.display = "none";
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + currentCounterFoodMenuItem).style["font-weight"]="normal";
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + currentCounterFoodMenuItem).style["font-weight"]="normal";  
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + currentCounterFoodMenuItem).style["color"]="tan";
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + currentCounterFoodMenuItem).style["color"]="tan";   
+                
+                foodMenuItemWithInterval.querySelector('.ItemImages #ItemImage' + nextCounterFoodMenuItem).style.display = "inline-block";
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + nextCounterFoodMenuItem).style["font-weight"]="bolder"; 
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + nextCounterFoodMenuItem).style["font-weight"]="bolder";
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + nextCounterFoodMenuItem).style["color"]="gold";   
+                foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + nextCounterFoodMenuItem).style["color"]="gold"; 
+            }
+            currentCounterFoodMenuItem = nextCounterFoodMenuItem;
+            nextCounterFoodMenuItem++;
+            if (currentCounterFoodMenuItem == this.document.getElementById("foodMenuId").children.length - 1) { nextCounterFoodMenuItem = 1; }           
         },3000)
 }
 
@@ -146,34 +162,52 @@ $(document).on('scroll', function() {
     const scrollValue = $(this).scrollTop();
 
     const $wrap = $('.wrap');
-    const wrapFromTop = $wrap.offset().top
-    const wrapHeight = $wrap.outerHeight()
+    const wrapFromTop = $wrap.offset().top;
+    const wrapHeight = $wrap.outerHeight();    
+    let wrapBoundingDetails =  $wrap.get(0).getBoundingClientRect();
+    let wrapFromY = wrapBoundingDetails["y"];
 
     const $tortilla = $('.tortilla');
-    const tortillaFromTop = $tortilla.offset().top
-    const tortillaHeight = $tortilla.outerHeight()
+    const tortillaFromTop = $tortilla.offset().top;
+    const tortillaHeight = $tortilla.outerHeight();
+    let tortillaBoundingDetails =  $tortilla.get(0).getBoundingClientRect();
+    let tortillaFromY = tortillaBoundingDetails["y"];
 
     const $pita = $('.pita');
-    const pitaFromTop = $pita.offset().top
-    const pitaHeight = $pita.outerHeight()
+    const pitaFromTop = $pita.offset().top;
+    const pitaHeight = $pita.outerHeight();
+    let pitaBoundingDetails =  $pita.get(0).getBoundingClientRect();
+    let pitaFromY = pitaBoundingDetails["y"];
 
     const $bread = $('.bread');
-    const breadFromTop = $bread.offset().top
-    const breadHeight = $bread.outerHeight()
+    const breadFromTop = $bread.offset().top;
+    const breadHeight = $bread.outerHeight();
+    let breadBoundingDetails =  $bread.get(0).getBoundingClientRect();
+    let breadFromY = breadBoundingDetails["y"];
 
-    if (scrollValue > wrapFromTop + wrapHeight - windowHeight) {
+    if (scrollValue > wrapFromTop + wrapHeight/2 - windowHeight) {
         $wrap.addClass('flow');
+        $wrap.find('.ItemDescriptions').addClass('active');
+        $wrap.find('.ItemImages').addClass('active');
     }
-    if (scrollValue> tortillaFromTop + tortillaHeight - windowHeight) {         
-        $tortilla.addClass('flow');              
+    if (scrollValue> tortillaFromTop + tortillaHeight/2 - windowHeight) {         
+        $tortilla.addClass('flow');
+        $tortilla.find('.ItemDescriptions').addClass('active');
+        $tortilla.find('.ItemImages').addClass('active');              
     }
-    if (scrollValue> pitaFromTop + pitaHeight - windowHeight) {
+    if (scrollValue> pitaFromTop + pitaHeight/2 - windowHeight) {
         $pita.addClass('flow');
+        $pita.find('.ItemDescriptions').addClass('active');
+        $pita.find('.ItemImages').addClass('active');
     }
-    if (scrollValue> breadFromTop + breadHeight - windowHeight) {        
+    if (scrollValue> breadFromTop + breadHeight/2 - windowHeight) {        
         $bread.addClass('flow');        
+        $bread.find('.ItemDescriptions').addClass('active');
+        $bread.find('.ItemImages').addClass('active');
     }
     if (scrollValue < 100) {
         $('.foodMenu div').removeClass('flow');    
+        $('.foodMenu .ItemDescriptions').removeClass('active'); 
+        $('.foodMenu .ItemImages').removeClass('active'); 
     }
 })

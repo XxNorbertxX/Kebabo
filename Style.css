@@ -384,12 +384,12 @@ ul.show li a {
     margin-top: 10px;
 }
 
-.foodMenu div:nth-child(2n) .ItemDescriptions {
+.foodMenu div:nth-child(2n) .ItemDescriptions.active {
     animation: fromLeftToRight 2s 1s;
     animation-fill-mode: both;
 }
 
-.foodMenu div:nth-child(2n+1) .ItemDescriptions {
+.foodMenu div:nth-child(2n+1) .ItemDescriptions.active {
     animation: fromRightToLeft 2s 1s;
     animation-fill-mode: both;
 }
@@ -434,13 +434,13 @@ ul.show li a {
     height: 20vh;*/  
     /*border:1.5px solid rgb(81, 41, 173);*/
     vertical-align: middle;
-    animation: fadein 2s;
     max-height: 100%;
     max-width: 40vw;
 }
 
 .foodMenu .wrap, .foodMenu .pita {
     /*transform: translateX(-100vw);*/    
+    visibility: hidden;
 }
 
 @keyframes fromLeftToRight {
@@ -453,18 +453,24 @@ ul.show li a {
     to {visibility: visible; transform: translateX(0);}
 }
 
-@keyframes fadein {
-    from {opacity: 0;}
-    to {opacity: 1;}
- }
-
 .foodMenu .tortilla, .foodMenu .bread {
     /*transform: translateX(100vw);*/ 
+    visibility: hidden;
 }
 
 .foodMenu .wrap.flow, .foodMenu .tortilla.flow, .foodMenu .pita.flow, .foodMenu .bread.flow {
     /*transform: translateX(0);*/
+    visibility: visible;
 }
+
+.ItemImages.active img {
+    animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+ }
 /*
 .wrap.flow {
     position: relative;
