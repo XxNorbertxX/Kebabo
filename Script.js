@@ -59,25 +59,31 @@ window.addEventListener('scroll', function() {
     }
     
     let foodMenuItems = foodMenu.querySelectorAll('.foodMenuItem');
-    foodMenuItems.forEach(foodMenuItem => {
-        let foodMenuItemBoundingDetails = foodMenuItem.getBoundingClientRect();
-        let foodMenuItemStartPointY = foodMenuItemBoundingDetails["y"];
-        /*alert("name: " + foodMenuItem.className + "\n" + "entrypoint: " + foodMenuItemStartPointY + "\n" + "halfscreen: " + halfScreen);*/
-        if (foodMenuItemWithInterval==null && foodMenuItemStartPointY < halfScreen && foodMenuItemStartPointY >= 0)
-        {         
-            setIntervalFoodMenuItem();
-            foodMenuItemWithInterval = foodMenuItem;
-        }
-        else
-        {
-            if (foodMenuItemWithInterval == foodMenuItem && (foodMenuItemStartPointY < 0 || foodMenuItemStartPointY > halfScreen))
-            {
-                clearInterval(intervalFoodMenuItem);
-                foodMenuItemWithInterval = null;
-                counterFoodMenuItem = 1;
+    if (foodMenuItems.length > 1)
+    {
+        foodMenuItems.forEach(foodMenuItem => {
+            let foodMenuItemBoundingDetails = foodMenuItem.getBoundingClientRect();
+            let foodMenuItemStartPointY = foodMenuItemBoundingDetails["y"];
+            if (foodMenuItemWithInterval==null && foodMenuItemStartPointY < halfScreen && foodMenuItemStartPointY >= 0)
+            {         
+                setIntervalFoodMenuItem();
+                foodMenuItemWithInterval = foodMenuItem;
             }
-        }
-    });
+            else
+            {
+                if (foodMenuItemWithInterval == foodMenuItem && (foodMenuItemStartPointY < 0 || foodMenuItemStartPointY > halfScreen))
+                {
+                    clearInterval(intervalFoodMenuItem);
+                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["font-weight"]="normal";
+                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["font-weight"]="normal";  
+                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["color"]="tan";
+                    foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["color"]="tan"; 
+                    foodMenuItemWithInterval = null;
+                    counterFoodMenuItem = 1;
+                }
+            }
+        });
+    }
 })
 
 /** Functions **/
@@ -97,11 +103,15 @@ function setIntervalFoodMenuItem()
             foodMenuItemWithInterval.querySelector('.ItemImages #ItemImage' + counterFoodMenuItem).style.display = "none";
             foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["font-weight"]="normal";
             foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["font-weight"]="normal";  
+            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["color"]="tan";
+            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["color"]="tan";      
             if (counterFoodMenuItem == this.document.getElementById("foodMenuId").children.length - 1) { counterFoodMenuItem = 1; }
             else counterFoodMenuItem++;            
             foodMenuItemWithInterval.querySelector('.ItemImages #ItemImage' + counterFoodMenuItem).style.display = "inline-block";
             foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["font-weight"]="bolder"; 
-            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["font-weight"]="bolder";           
+            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["font-weight"]="bolder";
+            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemHeader' + counterFoodMenuItem).style["color"]="gold";   
+            foodMenuItemWithInterval.querySelector('.ItemDescriptions .ItemDetails' + counterFoodMenuItem).style["color"]="gold";         
         },3000)
 }
 
