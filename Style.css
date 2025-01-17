@@ -40,12 +40,11 @@ nav ul {
 }
 nav ul li {
     list-style-type: none;
-    font-size: 25px;
 }
 nav ul li a {
-    margin: 15px;
+    margin: 1vw;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 20px;
     color: inherit;
     padding: 5px 30px 5px 30px;
     border: 1px solid tan;
@@ -127,14 +126,9 @@ ul.show li a {
     margin-top: 5vh;      
 }
 
-.introDescriptionOuter div:first-child {
+.introDescriptionOuter div:nth-child(odd) {
     width: 20%;
-}
-.introDescriptionOuter div:nth-child(2) {
-    width: 60%;
-}
-.introDescriptionOuter div:last-child {
-    width: 20%;
+    overflow: hidden;
 }
 
 .introDescription {
@@ -143,6 +137,7 @@ ul.show li a {
     flex-direction: column;  
     overflow: hidden;
     margin: auto;
+    width: 60%;
 }
 
 .intro .introDescription h1 {
@@ -204,14 +199,14 @@ ul.show li a {
 .sliderWrapper {
     position: relative;
     width: 1200px;
-    height: 422px;
+    height: 40vh;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 7vh;
 }
 .slider {
     width: 370%;
-    height: 422px;
+    height: 40vh;
     display: flex; 
 }
 .slider input {
@@ -224,7 +219,7 @@ ul.show li a {
 }
 .slide img {
     width: 800px;
-    height: 422px;
+    height: 40vh;
 
 }
 .navigation-manual {
@@ -366,7 +361,7 @@ ul.show li a {
 }
 
 @keyframes foodMenuItemDescriptionsExpand {
-    to {max-width: 400px;}
+    to {max-width: 20vw;}
 }
 
 @keyframes foodMenuItemDescriptionsFlow {
@@ -406,28 +401,29 @@ ul.show li a {
 .aboutUs {
     position: relative;
     text-align: center;
-    display: flex;
-    flex-wrap: wrap;
+    display: flex;      
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;   
-}
-
-.aboutUs p {
-    font-size: 20px;
-    margin: 5vh;
+    justify-content: space-evenly;
 }
 
 .aboutUsDescription {
-    display: flex;
+    display: flex; 
     align-items: center;
     overflow: hidden;
-    max-width: 60vw;
+    gap: 2vh;
+}
+
+.aboutUsDescription img {
+    max-width: 50vw;
 }
 
 .aboutUsDescription p {
-    max-width: 40vw;
     text-align: left;
+    font-size: 20px;
+    margin-left: 2vh;
+    margin-right: 2vh;
+    max-width: 30vw;
 }
 
 /* Flip Box */
@@ -439,7 +435,7 @@ ul.show li a {
     align-items: center;
     background-color: transparent;
     width: 80vw;
-    height: 35vh;   
+    height: 35vh;
     overflow: hidden;
 }
   
@@ -590,8 +586,8 @@ span.email:before {
 
 .backToTopSite {
     position: fixed;
-    bottom: 20px;
-    right: 30px;
+    bottom: 1.5vh;
+    right: 2.5vw;
     z-index: 2;   
 }
 
