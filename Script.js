@@ -1,19 +1,29 @@
 /** Variables **/
 
+const halfScreen = window.innerHeight/2;
+var currentScrollValue=0;
+var previousScrollValue=0;
+
+/* burger variables */
 const burger = document.querySelector(".burger");
 const burgerIcon = document.querySelector(".fa-bars");
 const burgerIconX = document.querySelector(".fa-xmark");
 const column = document.querySelector("ul");
 const goToMenu = document.querySelector(".goToMenu");
 var burgerIsClicked = false;
-let backToTopButton = this.document.getElementById("backToTopId");
-let counter = 1;
-let currentCounterFoodMenuItem = 0;
-const halfScreen = window.innerHeight/2;
+
+/* backToTop variables */
+var backToTopButton = this.document.getElementById("backToTopId");
+
+/* slider variables */
+var sliderCounter = 1;
+var sliderInterval;
+
+/* food menu variables */
 const foodMenu = this.document.getElementById("foodMenuId");
-let intervalId;
-let intervalFoodMenuItem;
-let foodMenuItemWithInterval;
+var foodMenuItemCurrentId = 1;
+var foodMenuItemInterval;
+var foodMenuItemWithInterval;
 
 /** JS **/
 
@@ -21,14 +31,14 @@ let foodMenuItemWithInterval;
 
 backToTopButton.style.display = "none";
 document.getElementById('radio1').checked = true;
-intervalId = setInterval(
+sliderInterval = setInterval(
     function()
     {
-        document.getElementById('radio' + counter).checked = true;
-        counter++;
+        document.getElementById('radio' + sliderCounter).checked = true;
+        sliderCounter++;
 
-        if (counter>4) {
-            counter = 1;
+        if (sliderCounter>4) {
+            sliderCounter = 1;
         }
     },6000)
 
@@ -59,13 +69,13 @@ window.addEventListener('scroll', function() {
     }
     
     let foodMenuItems = foodMenu.querySelectorAll('.foodMenuItem');
-    if (foodMenuItems.length > 1)
-    {
-        foodMenuItems.forEach(foodMenuItem => {
-            let foodMenuItemBoundingDetails = foodMenuItem.getBoundingClientRect();
-            let foodMenuItemStartPointY = foodMenuItemBoundingDetails["y"];
+    foodMenuItems.forEach(foodMenuItem => {
+        let foodMenuItemBoundingDetails = foodMenuItem.getBoundingClientRect();
+        let foodMenuItemStartPointY = foodMenuItemBoundingDetails["y"];
+        if (foodMenuItem.querySelectorAll('.foodMenuItemImages img').length > 1)
+        {
             if (foodMenuItemWithInterval==null && foodMenuItemStartPointY < halfScreen && foodMenuItemStartPointY >= 0)
-            {         
+            {   
                 setIntervalFoodMenuItem();
                 foodMenuItemWithInterval = foodMenuItem;
             }
@@ -73,18 +83,18 @@ window.addEventListener('scroll', function() {
             {
                 if (foodMenuItemWithInterval == foodMenuItem && (foodMenuItemStartPointY < 0 || foodMenuItemStartPointY > halfScreen))
                 {
-                    clearInterval(intervalFoodMenuItem);
-                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + currentCounterFoodMenuItem).style["font-weight"]="normal";
-                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + currentCounterFoodMenuItem).style["font-weight"]="normal";  
-                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + currentCounterFoodMenuItem).style["color"]="tan";
-                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + currentCounterFoodMenuItem).style["color"]="tan"; 
+                    clearInterval(foodMenuItemInterval);
+                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId).style["font-weight"]="normal";
+                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId).style["font-weight"]="normal";  
+                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId).style["color"]="tan";
+                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId).style["color"]="tan"; 
                     foodMenuItemWithInterval = null;
-                    currentCounterFoodMenuItem = 0;
-                    nextCounterFoodMenuItem = 1;
+                    foodMenuItemInterval= null;
+                    foodMenuItemCurrentId = 1;                    
                 }
             }
-        });
-    }
+        }
+    });
 })
 
 /** Functions **/
@@ -97,37 +107,37 @@ function topFunction() {
 }
 
 function setIntervalFoodMenuItem()
-{
-    let nextCounterFoodMenuItem = 1;
-    intervalFoodMenuItem = setInterval(
+{    
+    let foodMenuItemNextId = 1;
+    foodMenuItemInterval = setInterval(
         function()
         {
             foodMenuItemWithInterval.querySelectorAll('.foodMenuItemImages > *').forEach(image => { image.style.display = "none"; });
-            if (currentCounterFoodMenuItem != this.document.getElementById("foodMenuId").children.length - 1 && nextCounterFoodMenuItem == 1)
+            if (foodMenuItemCurrentId != this.document.getElementById("foodMenuId").children.length - 1 && foodMenuItemNextId == 1)
             {
-                foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + nextCounterFoodMenuItem).style.display = "inline-block";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + nextCounterFoodMenuItem).style["font-weight"]="bolder"; 
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + nextCounterFoodMenuItem).style["font-weight"]="bolder";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + nextCounterFoodMenuItem).style["color"]="gold";   
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + nextCounterFoodMenuItem).style["color"]="gold";                
+                foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + foodMenuItemNextId).style.display = "inline-block";
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemNextId).style["font-weight"]="bolder"; 
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemNextId).style["font-weight"]="bolder";
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemNextId).style["color"]="gold";   
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemNextId).style["color"]="gold";                
             }
             else
             {
-                foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + currentCounterFoodMenuItem).style.display = "none";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + currentCounterFoodMenuItem).style["font-weight"]="normal";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + currentCounterFoodMenuItem).style["font-weight"]="normal";  
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + currentCounterFoodMenuItem).style["color"]="tan";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + currentCounterFoodMenuItem).style["color"]="tan";   
+                foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + foodMenuItemCurrentId).style.display = "none";
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId).style["font-weight"]="normal";
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId).style["font-weight"]="normal";  
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId).style["color"]="tan";
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId).style["color"]="tan";   
                 
-                foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + nextCounterFoodMenuItem).style.display = "inline-block";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + nextCounterFoodMenuItem).style["font-weight"]="bolder"; 
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + nextCounterFoodMenuItem).style["font-weight"]="bolder";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + nextCounterFoodMenuItem).style["color"]="gold";   
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + nextCounterFoodMenuItem).style["color"]="gold"; 
+                foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + foodMenuItemNextId).style.display = "inline-block";
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemNextId).style["font-weight"]="bolder"; 
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemNextId).style["font-weight"]="bolder";
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemNextId).style["color"]="gold";   
+                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemNextId).style["color"]="gold"; 
             }
-            currentCounterFoodMenuItem = nextCounterFoodMenuItem;
-            nextCounterFoodMenuItem++;
-            if (currentCounterFoodMenuItem == this.document.getElementById("foodMenuId").children.length - 1) { nextCounterFoodMenuItem = 1; }           
+            foodMenuItemCurrentId = foodMenuItemNextId;
+            foodMenuItemNextId++;
+            if (foodMenuItemCurrentId == this.document.getElementById("foodMenuId").children.length - 1) { foodMenuItemNextId = 1; }           
         },3000)
 }
 
@@ -160,26 +170,24 @@ $('section nav ul li a').on('click', function() {
 $(document).on('scroll', function() {
 
     const windowHeight = $(window).height();
-    const scrollValue = $(this).scrollTop();
-    const delayInMilliseconds = 2000;
+    currentScrollValue = $(this).scrollTop();  
 
     $('.foodMenuItem').each(function() {
         var element = $(this);
         var itemFromTop = element.offset().top;
-        var itemHeight = element.outerHeight();        
-        if (scrollValue > itemFromTop + itemHeight/2 - windowHeight) {
+        var itemHeight = element.outerHeight();
+        if (currentScrollValue > itemFromTop + itemHeight/2 - windowHeight) {
             element.addClass('showAfterScrollOn');
             element.find('.foodMenuItemImages').addClass('showAfterScrollOn');
-            setTimeout(function() {
-                $(element).find('.foodMenuItemDescriptions').css('display','inline-block');
-                $(element).find('.foodMenuItemDescriptions').addClass('flow');                
-            }, delayInMilliseconds);
+            element.find('.foodMenuItemDescriptions').addClass('flow');
         }
     });
-
-    if (scrollValue < 100) {
+    if (currentScrollValue < 200 && currentScrollValue < previousScrollValue) {
+        previousScrollValue = currentScrollValue;     
         $('.foodMenu .foodMenuItem').removeClass('showAfterScrollOn');    
         $('.foodMenu .foodMenuItem .foodMenuItemImages').removeClass('showAfterScrollOn');
-        $('.foodMenu .foodMenuItem .foodMenuItemDescriptions').removeClass('flow');         
+        $('.foodMenu .foodMenuItem .foodMenuItemDescriptions').removeClass('flow');
+        $('.foodMenu .foodMenuItem .foodMenuItemImages > *').each(function() { var elementt = $(this); elementt.removeAttr("display"); }); 
     }
+    else {previousScrollValue = currentScrollValue;}
 })

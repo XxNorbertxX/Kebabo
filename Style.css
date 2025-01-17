@@ -311,25 +311,25 @@ ul.show li a {
     height: 50vh;
     visibility: hidden;
     display: block;
-    /*border:1.5px solid rgb(41, 163, 17);*/
-    overflow: hidden;    
 }
 
-.foodMenu div:nth-child(2n+1){
+.foodMenuItem:nth-child(odd) {
     direction: rtl;
 }
 
-.foodMenuItemDescriptions {
-    vertical-align: middle;
-    display: none;
-    margin: 30px;
-    margin-top: 10px;
+.foodMenuItem:nth-child(odd) .foodMenuItemDescriptions{
+    margin-left: 30px;
+    transform: translateX(100vw);
+}
+
+.foodMenuItem:nth-child(even) .foodMenuItemDescriptions{    
+    margin-right: 30px;
+    transform: translateX(-100vw);
 }
 
 .foodMenuItemHeader {
     font-size: x-large;
     vertical-align: middle;
-    /*border:1.5px solid rgb(148, 210, 140);*/
     font-style: normal;
     font-weight: normal;
     text-align: left;
@@ -339,37 +339,48 @@ ul.show li a {
     font-style: italic;
     font-weight: normal;
     vertical-align: middle;
-    /*border:1.5px solid rgb(235, 221, 29);*/
 }
 
-.foodMenu div:nth-child(2n) .foodMenuItemDescriptions.flow {
-    animation: fromLeftToRight 2s 1s;
-    animation-fill-mode: both;
+.foodMenuItemDescriptions {
+    vertical-align: middle;
+    display: inline-block;
+    visibility: hidden;
+    direction: ltr;
+    max-width: 0;
 }
 
-.foodMenu div:nth-child(2n+1) .foodMenuItemDescriptions.flow {
-    animation: fromRightToLeft 2s 1s;
-    animation-fill-mode: both;
+.foodMenuItemDescriptions p {
+    white-space: nowrap;   
 }
 
-@keyframes fromLeftToRight {
-    from {transform: translateX(-100vw);}
-    to {transform: translateX(0);}
+.foodMenu div:nth-child(even) .foodMenuItemDescriptions.flow {
+    animation: foodMenuItemDescriptionsFlow 1s 2s, foodMenuItemDescriptionsExpand 0.4s 2.75s;
+    animation-fill-mode: forwards, forwards;
+    animation-timing-function: linear, linear; 
 }
 
-@keyframes fromRightToLeft {
-    from {transform: translateX(100vw);}
-    to {transform: translateX(0);}
+.foodMenu div:nth-child(odd) .foodMenuItemDescriptions.flow {
+    animation: foodMenuItemDescriptionsFlow 1s 2s, foodMenuItemDescriptionsExpand 0.4s 2.75s;
+    animation-fill-mode: forwards, forwards;
+    animation-timing-function: linear, linear; 
+}
+
+@keyframes foodMenuItemDescriptionsExpand {
+    to {max-width: 400px;}
+}
+
+@keyframes foodMenuItemDescriptionsFlow {
+    to {transform: translateX(0); visibility: visible;}
 }
 
 .foodMenuItemImages {
+    position: relative;
     display: inline-block;
-    /*border:1.5px solid rgb(189, 19, 19);*/
-    height: inherit;    
+    height: inherit;
+    direction: ltr;    
 }
 
 .foodMenuItemImages img {
-    /*border:1.5px solid rgb(81, 41, 173);*/
     display: none;
     vertical-align: middle;
     max-height: 100%;
