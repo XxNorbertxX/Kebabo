@@ -1,4 +1,5 @@
-@media (orientation: portrait) and (min-width: 370px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 4),
+        (min-width: 320px) and (orientation: portrait) {
 
     /** NavigationMenu Section **/
 
@@ -9,7 +10,7 @@
     /** Intro Section **/
 
     .intro .introDescription h1 {
-        font-size: 35px;   
+        font-size: 30px;   
     }
 
     .intro .introDescription .introHeaderUnderneath {
@@ -17,11 +18,15 @@
     }
     
     .introDescription p {
-        font-size: 10px;  
+        font-size: 8.5px;  
     }
 
     .intro .introDescriptionOuter .logoL > *, .intro .introDescriptionOuter .logoR > * {
         max-height: 20%;
+    }
+
+    .sliderWrapper {
+        width: 95vw;
     }
 
     /** Food Menu Section **/
@@ -48,35 +53,58 @@
         margin-right: 0;
     }
 
+    .foodMenu div:nth-child(even) .foodMenuItemDescriptions.flow {
+        animation: foodMenuItemDescriptionsFlow 0.5s 2s, foodMenuItemDescriptionsExpand 0.4s 2.25s;
+        animation-fill-mode: forwards, forwards;
+        animation-timing-function: linear, linear; 
+    }
+    
+    .foodMenu div:nth-child(odd) .foodMenuItemDescriptions.flow {
+        animation: foodMenuItemDescriptionsFlow 0.5s 2s, foodMenuItemDescriptionsExpand 0.4s 2.25s;
+        animation-fill-mode: forwards, forwards;
+        animation-timing-function: linear, linear; 
+    }
+
     @keyframes foodMenuItemDescriptionsExpand {
-        to {max-width: 80vw;}
+        to {max-width: 90vw;}
     }    
 
     /** AboutUs Section **/
 
     .aboutUs {
         height: auto;
+        gap: 4vh;
     }
 
     .aboutUsDescription p {
         font-size: 15px;
         max-width: 100vw;
-        /*border:1.5px solid rgb(66, 7, 175);*/
     }
 
     .aboutUsDescription {
-        flex-direction: column;
-        /*border:1.5px solid tan;*/
+        flex-direction: column;    
     }
 
     .flipBoxWrapper {
         flex-direction: column;
-        height: 90vh;
+        gap: 2vh;
+    }
+
+    .flipBoxInner { 
+        width: 90vw;
+    }
+
+    .flipBoxFront div {
+        font-size: x-large; 
     }
 
     /** Contact Section **/
 
     .contact div {  
         font-size: 12px;    
+    }
+
+    .backToTopBtn:hover {
+        all: revert-layer;
     }
 }
