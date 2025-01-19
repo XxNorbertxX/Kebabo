@@ -22,7 +22,7 @@ var sliderInterval;
 /* food menu variables */
 const foodMenu = this.document.getElementById("foodMenuId");
 var foodMenuItemCurrentId = 1;
-var foodMenuItemInterval;
+var foodMenuItemIntervalId;
 var foodMenuItemWithInterval;
 
 /** JS **/
@@ -83,13 +83,21 @@ window.addEventListener('scroll', function() {
             {
                 if (foodMenuItemWithInterval == foodMenuItem && (foodMenuItemStartPointY < 0 || foodMenuItemStartPointY > halfScreen))
                 {
-                    clearInterval(foodMenuItemInterval);
-                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId).style["font-weight"]="normal";
-                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId).style["font-weight"]="normal";  
-                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId).style["color"]="tan";
-                    foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId).style["color"]="tan"; 
+                    clearInterval(foodMenuItemIntervalId);
+                    let foodMenuItemHeaderSelection = foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId);
+                    let foodMenuItemDetailsSelection = foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId);
+                    if (foodMenuItemHeaderSelection !== null)
+                    {
+                        foodMenuItemHeaderSelection.style["font-weight"]="normal";                 
+                        foodMenuItemHeaderSelection.style["color"]="tan";   
+                    }
+                    if (foodMenuItemDetailsSelection !== null) 
+                    {
+                        foodMenuItemDetailsSelection.style["font-weight"]="normal";
+                        foodMenuItemDetailsSelection.style["color"]="tan";
+                    }
                     foodMenuItemWithInterval = null;
-                    foodMenuItemInterval= null;
+                    foodMenuItemIntervalId= null;
                     foodMenuItemCurrentId = 1;                    
                 }
             }
@@ -108,36 +116,66 @@ function topFunction() {
 
 function setIntervalFoodMenuItem()
 {    
-    let foodMenuItemNextId = 1;
-    foodMenuItemInterval = setInterval(
+    let foodMenuItemNextId = 1;    
+    foodMenuItemIntervalId = setInterval(
         function()
         {
+            let foodMenuItemWithIntervalElementsCount = foodMenuItemWithInterval.querySelector(".foodMenuItemImages").children.length;
+
+            let foodMenuItemImageCurrentSelection = foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + foodMenuItemCurrentId);
+            let foodMenuItemHeaderCurrentSelection = foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId);
+            let foodMenuItemDetailsCurrentSelection = foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId);
+
+            let foodMenuItemImageNextSelection = foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + foodMenuItemNextId);
+            let foodMenuItemHeaderNextSelection = foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemNextId);
+            let foodMenuItemDetailsNextSelection = foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemNextId); 
+
             foodMenuItemWithInterval.querySelectorAll('.foodMenuItemImages > *').forEach(image => { image.style.display = "none"; });
-            if (foodMenuItemCurrentId != this.document.getElementById("foodMenuId").children.length - 1 && foodMenuItemNextId == 1)
+
+            if (foodMenuItemCurrentId != foodMenuItemWithIntervalElementsCount && foodMenuItemNextId == 1)
             {
-                foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + foodMenuItemNextId).style.display = "inline-block";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemNextId).style["font-weight"]="bolder"; 
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemNextId).style["font-weight"]="bolder";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemNextId).style["color"]="gold";   
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemNextId).style["color"]="gold";                
+                if (foodMenuItemImageNextSelection !== null && foodMenuItemHeaderNextSelection !== null)
+                {
+                    foodMenuItemImageNextSelection.style.display = "inline-block";
+                    foodMenuItemHeaderNextSelection.style["font-weight"]="bolder";                 
+                    foodMenuItemHeaderNextSelection.style["color"]="gold";   
+                }
+                if (foodMenuItemDetailsNextSelection !== null) 
+                {
+                    foodMenuItemDetailsNextSelection.style["font-weight"]="bolder";
+                    foodMenuItemDetailsNextSelection.style["color"]="gold";
+                }                                
             }
             else
             {
-                foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + foodMenuItemCurrentId).style.display = "none";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId).style["font-weight"]="normal";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId).style["font-weight"]="normal";  
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemCurrentId).style["color"]="tan";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemCurrentId).style["color"]="tan";   
+                if (foodMenuItemImageCurrentSelection !== null && foodMenuItemHeaderCurrentSelection !== null)
+                {
+                    foodMenuItemImageCurrentSelection.style.display = "none";
+                    foodMenuItemHeaderCurrentSelection.style["font-weight"]="normal";                 
+                    foodMenuItemHeaderCurrentSelection.style["color"]="tan";   
+                }
+                if (foodMenuItemDetailsCurrentSelection !== null) 
+                {
+                    foodMenuItemDetailsCurrentSelection.style["font-weight"]="normal";
+                    foodMenuItemDetailsCurrentSelection.style["color"]="tan";
+                }  
                 
-                foodMenuItemWithInterval.querySelector('.foodMenuItemImages #foodMenuItemImage' + foodMenuItemNextId).style.display = "inline-block";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemNextId).style["font-weight"]="bolder"; 
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemNextId).style["font-weight"]="bolder";
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemHeader' + foodMenuItemNextId).style["color"]="gold";   
-                foodMenuItemWithInterval.querySelector('.foodMenuItemDescriptions #foodMenuItemDetails' + foodMenuItemNextId).style["color"]="gold"; 
+                
+                if (foodMenuItemImageNextSelection !== null && foodMenuItemHeaderNextSelection !== null)
+                {
+                    foodMenuItemImageNextSelection.style.display = "inline-block";
+                    foodMenuItemHeaderNextSelection.style["font-weight"]="bolder";                 
+                    foodMenuItemHeaderNextSelection.style["color"]="gold";   
+                }
+                if (foodMenuItemDetailsNextSelection !== null) 
+                {
+                    foodMenuItemDetailsNextSelection.style["font-weight"]="bolder";
+                    foodMenuItemDetailsNextSelection.style["color"]="gold";
+                }  
             }
             foodMenuItemCurrentId = foodMenuItemNextId;
             foodMenuItemNextId++;
-            if (foodMenuItemCurrentId == this.document.getElementById("foodMenuId").children.length - 1) { foodMenuItemNextId = 1; }           
+            if (foodMenuItemCurrentId == foodMenuItemWithIntervalElementsCount) { foodMenuItemNextId = 1; }           
         },3000)
 }
 

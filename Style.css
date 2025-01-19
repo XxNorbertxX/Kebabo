@@ -296,17 +296,24 @@ ul.show li a {
 }
 
 .foodMenuHeader {   
-    margin: auto;   
+    margin: auto; 
 }
 
 .foodMenuHeader img {
     width: 25%; 
 }
 
+.foodMenuItemMainHeader {
+    font-size: xx-large;
+    color: gold;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+
 .foodMenuItem {
     height: fit-content;
     visibility: hidden;
-    display: block;
+    display: block;    
 }
 
 .foodMenuItem:nth-child(odd) {
@@ -337,16 +344,40 @@ ul.show li a {
     vertical-align: middle;
 }
 
+.foodMenuItemDescriptions::before {
+    background-image: url("Images/logo_final_2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: grayscale(100%);
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .foodMenuItemDescriptions {
     vertical-align: middle;
     display: inline-block;
     visibility: hidden;
     direction: ltr;
     max-width: 0;
+    position: relative;
+}
+
+.foodMenuItemDescriptionsNoFlow {
+    display: inline-block;
+    visibility: visible;
+    direction: ltr;
+    text-align: center;
 }
 
 .foodMenuItemDescriptions p {
-    white-space: nowrap;   
+    white-space: nowrap; 
+    text-align: left;
+    position: relative;
 }
 
 .foodMenu div:nth-child(even) .foodMenuItemDescriptions.flow {
