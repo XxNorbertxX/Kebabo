@@ -420,7 +420,7 @@ ul.show li a {
     to {opacity: 1;}
 }
 
-.foodMenuItem.showAfterScrollOn {
+.foodMenuItem.showAfterScrollOn, .foodMenuItem.showAlways {
     visibility: visible;
 }
 
