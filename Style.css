@@ -78,47 +78,6 @@ nav ul li a:hover {
     color: black;
 }
 
-/* Burger */
-
-.burger {
-    transform: translateX(260%);
-    position: fixed;
-    z-index: 9;
-    top: 40px;
-    right: 40px;
-    font-size: 40px;
-    line-height: 50px;
-    transition: .3s linear;
-}
-
-.burger.show {
-    transform: translateX(0);
-}
-
-.burger:hover {
-    cursor: pointer;
-}
-
-.fa-solid {
-    display: none;
-    color: #795944;
-}
-
-i.show {
-    display: block;
-}
-
-ul.show {
-    position: fixed;
-    z-index: 8;
-    top: 5vh;
-    right: 5vw;
-}
-
-ul.show li a {
-    color: #795944;
-}
-
 /** Intro Section **/
 
 .intro {
