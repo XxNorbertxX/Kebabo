@@ -12,10 +12,6 @@
     <div class="mainWrapper">       
         <section id="navigationMenuId" class="navigationMenu">          
             <nav>
-                <div id="burgerId" class="burger">
-                    <i class="fa-solid fa-bars show"></i>
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
                 <ul>                    
                     <li><a class="foodMenuLink" href="#">Menu</a></li>
                     <li><a class="aboutUsLink" href="#">About us</a></li>
@@ -41,50 +37,72 @@
                 </div>
                 <div class="logoR"><img src="Images/logo_final_2.png" alt=""></div>
             </div>
-            <div class="sliderWrapper">
-                <div class="slider">
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
-                    <input type="radio" name="radio-btn" id="radio4">
-                    <div class="slide first"><img id="slide-1" src="Images/slider1.jpg" alt="">
-                    </div>
-                    <div class="slide"><img id="slide-2" src="Images/slider2.jpg" alt="">
-                    </div>
-                    <div class="slide"><img id="slide-3" src="Images/slider3.jpg" alt="">
-                    </div>
-                    <div class="slide"><img id="slide-4" src="Images/slider4.jpg" alt="">
-                    </div>
-                    <div class="navigation-auto">
-                        <div class="auto-btn-1"></div>
-                        <div class="auto-btn-2"></div>
-                        <div class="auto-btn-3"></div>
-                        <div class="auto-btn-4"></div>
-                    </div>
-                </div>
-                <div class="navigation-manual">
-                    <label for="radio1" class="manual-btn"></label>
-                    <label for="radio2" class="manual-btn"></label>
-                    <label for="radio3" class="manual-btn"></label>
-                    <label for="radio4" class="manual-btn"></label>
+            <div class="carousel-wrapper">
+                <!-- abstract radio buttons for slides -->
+                <input id="slide1" type="radio" name="controls" checked="checked" onclick="checkRadio(id)"/>
+                <input id="slide2" type="radio" name="controls" onclick="checkRadio(id)"/>
+                <input id="slide3" type="radio" name="controls" onclick="checkRadio(id)"/>
+                <input id="slide4" type="radio" name="controls" onclick="checkRadio(id)"/>
+                <input id="slide5" type="radio" name="controls" onclick="checkRadio(id)"/>
+            
+                <!-- navigation dots -->
+                <label for="slide1" class="nav-dot"></label>
+                <label for="slide2" class="nav-dot"></label>
+                <label for="slide3" class="nav-dot"></label>
+                <label for="slide4" class="nav-dot"></label>
+                <label for="slide5" class="nav-dot"></label>
+            
+                <!-- arrows -->
+                <label for="slide1" class="left-arrow"> < </label>
+                <label for="slide2" class="left-arrow"> < </label>
+                <label for="slide3" class="left-arrow"> < </label>
+                <label for="slide4" class="left-arrow"> < </label>
+                <label for="slide5" class="left-arrow"> < </label>
+            
+                <label for="slide1" class="right-arrow"> > </label>
+                <label for="slide2" class="right-arrow"> > </label>
+                <label for="slide3" class="right-arrow"> > </label>
+                <label for="slide4" class="right-arrow"> > </label>
+                <label for="slide5" class="right-arrow"> > </label>
+            
+                <div class="carousel">
+                  <ul>
+                    <li>
+                      <img src="Images/slider1.jpg" alt="">
+                    </li>
+                    <li>
+                      <img src="Images/slider2.jpg" alt="">
+                    </li>
+                    <li>
+                      <img src="Images/slider3.jpg" alt="">
+                    </li>
+                    <li>
+                      <img src="Images/slider4.jpg" alt="">
+                    </li>
+                    <li>
+                      <img src="Images/slider5.jpg" alt="">
+                    </li>
+                  </ul>
                 </div>
             </div>            
         </section>
         <section id="foodMenuId" class="foodMenu">
             <div class="foodMenuHeader"><img src="Images/foodMenu.png" alt=""></div>                                     
             <div class="foodMenuItem">
-                <p class="foodMenuItemMainHeader">--== Kebab ==--</p>
+                <p class="foodMenuItemMainHeader">--== Kebab ==--</p>                
                 <div class="foodMenuItemDescriptions">
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader1">Kebab small</p>
-                    <p class="foodMenuItemDetails" id="foodMenuItemDetails1">kebab roll, poultry/beef meat, salad, sauce</p>
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader2">Kebab big</p>
-                    <p class="foodMenuItemDetails" id="foodMenuItemDetails2">kebab roll, poultry/beef meat, salad, sauce</p>
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader3">Kebab with fries on plate</p>
-                    <p class="foodMenuItemDetails" id="foodMenuItemDetails3">poultry/beef meat, salad, sauce</p>
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader4">Kebab rollo small</p>
-                    <p class="foodMenuItemDetails" id="foodMenuItemDetails4">pita, poultry/beef meat, salad, sauce</p> 
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader5">Kebab rollo big</p>
-                    <p class="foodMenuItemDetails" id="foodMenuItemDetails5">pita, poultry/beef meat, salad, sauce</p>                                             
+                    <div class="foodMenuItemDescriptionsWrapper">
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader1">Kebab small</p>
+                        <p class="foodMenuItemDetails" id="foodMenuItemDetails1">kebab roll, poultry/beef meat, salad, sauce</p>
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader2">Kebab big</p>
+                        <p class="foodMenuItemDetails" id="foodMenuItemDetails2">kebab roll, poultry/beef meat, salad, sauce</p>
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader3">Kebab with fries on plate</p>
+                        <p class="foodMenuItemDetails" id="foodMenuItemDetails3">poultry/beef meat, salad, sauce</p>
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader4">Kebab rollo small</p>
+                        <p class="foodMenuItemDetails" id="foodMenuItemDetails4">pita, poultry/beef meat, salad, sauce</p> 
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader5">Kebab rollo big</p>
+                        <p class="foodMenuItemDetails" id="foodMenuItemDetails5">pita, poultry/beef meat, salad, sauce</p>                                             
+                    </div>
                 </div>
                 <div class="foodMenuItemImages">
                     <img src="Images/wrap.png" alt="" id="foodMenuItemImage1">
@@ -97,8 +115,10 @@
             <div class="foodMenuItem">
                 <p class="foodMenuItemMainHeader">--== Sandwiches ==--</p>
                 <div class="foodMenuItemDescriptions">
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader1">Sandwich hot dog</p>
-                    <p class="foodMenuItemDetails" id="foodMenuItemDetails1">bread, frankfurter, sauce</p>                       
+                    <div class="foodMenuItemDescriptionsWrapper">
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader1">Sandwich hot dog</p>
+                        <p class="foodMenuItemDetails" id="foodMenuItemDetails1">bread, frankfurter, sauce</p>   
+                    </div>                    
                 </div>
                 <div class="foodMenuItemImages">
                     <img src="Images/wrap.png" alt="" id="foodMenuItemImage1">
@@ -107,10 +127,12 @@
             <div class="foodMenuItem">
                 <p class="foodMenuItemMainHeader">--== Sets ==--</p>
                 <div class="foodMenuItemDescriptions">
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader1">Child Set</p>
-                    <p class="foodMenuItemDetails" id="foodMenuItemDetails1">poultry/beef meat, salad, sauce</p>
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader2">Child Box</p>
-                    <p class="foodMenuItemDetails" id="foodMenuItemDetails2">poultry/beef meat, salad, sauce</p>                  
+                    <div class="foodMenuItemDescriptionsWrapper">
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader1">Child Set</p>
+                        <p class="foodMenuItemDetails" id="foodMenuItemDetails1">poultry/beef meat, salad, sauce</p>
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader2">Child Box</p>
+                        <p class="foodMenuItemDetails" id="foodMenuItemDetails2">poultry/beef meat, salad, sauce</p>                  
+                    </div>
                 </div>
                 <div class="foodMenuItemImages">
                     <img src="Images/wrap.png" alt="" id="foodMenuItemImage1">
@@ -120,9 +142,11 @@
             <div class="foodMenuItem">
                 <p class="foodMenuItemMainHeader">--== Other meals ==--</p>
                 <div class="foodMenuItemDescriptions">
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader1">Nuggets</p>
-                    <p class="foodMenuItemDetails" id="foodMenuItemDetails1">poultry meat</p>
-                    <p class="foodMenuItemHeader" id="foodMenuItemHeader2">Fries</p>                    
+                    <div class="foodMenuItemDescriptionsWrapper">
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader1">Nuggets</p>
+                        <p class="foodMenuItemDetails" id="foodMenuItemDetails1">poultry meat</p>
+                        <p class="foodMenuItemHeader" id="foodMenuItemHeader2">Fries</p>                    
+                    </div>
                 </div>
                 <div class="foodMenuItemImages">
                     <img src="Images/wrap.png" alt="" id="foodMenuItemImage1">
@@ -157,10 +181,10 @@
                 <img src="Images/foodtruck.png" alt="">                
             </div>
             <p class="aboutUsCommitments">OUR COMMITMENTS</p>
-            <div class="flipBoxWrapper">
+            <div class="flipBoxWrapper">                               
                 <div class="flipBoxInner">
-                    <div class="flipBoxFront">
-                        <img src="Images/flipboximg1.png" alt="">
+                    <div class="flipBoxFront">                                                
+                        <img src="Images/flipboximg1.png" alt="">                        
                         <div>POLISH MARK</div>
                     </div>
                     <div class="flipBoxBack">
@@ -207,9 +231,9 @@
                 </div>
             </div>                                    
         </section>
-        <section class="footer">
+        <footer class="footer">
             <p>Projekt i wykonanie: Masti & ShadowHunter</p>
-        </section>               
+        </footer>               
     </div>   
     <div class="backToTopSite">
         <button onclick="topFunction()" id="backToTopId" class="backToTopBtn" title="Go to top">↑</button> 

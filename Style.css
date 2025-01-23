@@ -1,13 +1,23 @@
 /** Whole site **/
+:root {
+    --section-height: 100vh;
+    --navigationMenu-height: 7vh;
+    --mobile-font-size: 16px;
+    --site-font-size: 20px;
+}
 
 *{
     margin: 0;
     padding: 0;
 }
 
+html {
+    font-size: var(--site-font-size);
+}
+
 section {
     width: 100%;
-    height: 100vh;
+    height: var(--section-height);
     background-color: black;   
     color: tan; 
     overflow: hidden;
@@ -31,11 +41,11 @@ h2 {
 .navigationMenu { 
     display: flex;    
     align-items: center;
-    height: 10vh;
+    height: var(--navigationMenu-height);
     z-index: 1;
-    position: absolute;
-    /*position: sticky;
-    top: 0;*/
+    position: sticky;
+    top: 0;
+    border-bottom:none;
 }
 
 nav 
@@ -48,15 +58,17 @@ nav ul {
     justify-content: flex-start;
     align-items: end;   
 }
+
 nav ul li {
     list-style-type: none;
 }
+
 nav ul li a {
     margin: 1vw;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1rem;
     color: inherit;
-    padding: 5px 30px 5px 30px;
+    padding: 2px 20px 2px 20px;
     border: 1px solid tan;
     border-radius: 25% / 100%;
 }
@@ -115,6 +127,7 @@ ul.show li a {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    height: calc(var(--section-height) - var(--navigationMenu-height));
 }
 
 .introDescriptionOuter {
@@ -124,8 +137,7 @@ ul.show li a {
     overflow: hidden;   
     flex: 1;    
     width: 100%;
-    overflow: hidden;   
-    margin-top: 5vh;      
+    overflow: hidden;     
 }
 
 .introDescriptionOuter div:nth-child(odd) {
@@ -140,10 +152,11 @@ ul.show li a {
     overflow: hidden;
     margin: auto;
     width: 60%;
+    font-size: calc(2.5*var(--site-font-size))
 }
 
 .intro .introDescription h1 {
-    font-size: 75px;
+    font-size: 1.3em;
     text-align: center; 
     font-family: Arial, Helvetica, sans-serif;   
 }
@@ -169,12 +182,12 @@ ul.show li a {
 
 .intro .introDescription .introHeaderUnderneath {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: xx-large;
+    font-size: 0.6em;
 }
 
 .introDescription p {
     position: relative;
-    font-size: 20px;
+    font-size: 0.4em;
     text-align: center;   
 }
 
@@ -184,12 +197,14 @@ ul.show li a {
     margin-right: auto;
     text-align: center;
     position: relative;
-    padding: 5px 30px 5px 30px;
+    padding: 2px 20px 2px 20px;
     border: 1px solid tan;
     text-decoration: none;
     color: inherit;
     border-radius: 25% / 100%;
+    font-size: 0.4em;
 }
+
 .intro .goToMenu:hover{
     background-color: khaki;
     color: black;
@@ -197,93 +212,170 @@ ul.show li a {
 
 /* Slider */
 
-.sliderWrapper {
+.carousel li img, .carousel li, .carousel {
+    width: 100%;
+  }
+  
+  .carousel-wrapper, .carousel ul {
+    display: flex;
+  }
+  
+  .carousel ul {
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carousel-wrapper {
     position: relative;
-    width: 1200px;
-    height: 40vh;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 7vh;
-}
-.slider {
-    width: 370%;
-    height: 40vh;
-    display: flex; 
-}
-.slider input {
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+  .carousel-wrapper input {
     display: none;
-}
-.slide {
-    width: 20%;
-    transition: 2s;
-    text-align: center;  
-}
-.slide img {
-    width: 800px;
-    height: 40vh;
-
-}
-.navigation-manual {
+  }
+  
+  .carousel {
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  .carousel ul {
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 500%;
+    transition: left 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  .carousel li img {
+    border-radius: 15px;
+  }
+  
+  .nav-dot {
     position: absolute;
-    width: 1200px;
-    margin-top: -40px;
-    display: flex;
-    justify-content: center;
-}
-.manual-btn {
-    border: 2px solid #ccc;
-    padding: 5px;
-    border-radius: 10px;
     cursor: pointer;
-    transition: 1s;
-}
-.manual-btn:not(:last-child) {
-    margin-right: 40px;
-}
-.manual-btn:hover {
-    background-color: #ccc;
-}
-#radio1:checked ~ .first {
-    margin-left: 3.5%;
-}
-#radio2:checked ~ .first {
-    margin-left: -16.5%;
-}
-#radio3:checked ~ .first {
-    margin-left: -36.5%;
-}
-#radio4:checked ~ .first {
-    margin-left: -56.5%;
-}
-
-.navigation-auto {
+    margin-left: -7.5px;
+    bottom: -12.5px;
+    width: 15px;
+    height: 15px;
+    opacity: 0.5;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+  }
+  .nav-dot:hover {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+  .nav-dot:active {
+    transform: scale(0.9);
+  }
+  
+  .nav-dot[for=slide1] {
+    left: 40%;
+  }
+  
+  #slide1:checked ~ .carousel ul {
+    left: 0%;
+  }
+  #slide1:checked ~ .nav-dot[for=slide1] {
+    opacity: 1;
+  }
+  
+  .nav-dot[for=slide2] {
+    left: 45%;
+  }
+  
+  #slide2:checked ~ .carousel ul {
+    left: -100%;
+  }
+  #slide2:checked ~ .nav-dot[for=slide2] {
+    opacity: 1;
+  }
+  
+  .nav-dot[for=slide3] {
+    left: 50%;
+  }
+  
+  #slide3:checked ~ .carousel ul {
+    left: -200%;
+  }
+  #slide3:checked ~ .nav-dot[for=slide3] {
+    opacity: 1;
+  }
+  
+  .nav-dot[for=slide4] {
+    left: 55%;
+  }
+  
+  #slide4:checked ~ .carousel ul {
+    left: -300%;
+  }
+  #slide4:checked ~ .nav-dot[for=slide4] {
+    opacity: 1;
+  }
+  
+  .nav-dot[for=slide5] {
+    left: 60%;
+  }
+  
+  #slide5:checked ~ .carousel ul {
+    left: -400%;
+  }
+  #slide5:checked ~ .nav-dot[for=slide5] {
+    opacity: 1;
+  }
+  
+  .right-arrow, .left-arrow {
+    display: none;
     position: absolute;
-    display: flex;
-    width: 1200px;
-    justify-content: center;
-    margin-top: 382px;
-}
-.navigation-auto div {
-    border: 2px solid #333;
-    padding: 5px;
-    border-radius: 10px;
-    transition: 1s;
-}
-.navigation-auto div:not(:last-child) {
-    margin-right: 40px;
-}
-#radio1:checked ~.navigation-auto .auto-btn-1 {
-    background-color: #ccc;
-}
-#radio2:checked ~.navigation-auto .auto-btn-2 {
-    background-color: #ccc;
-}
-#radio3:checked ~.navigation-auto .auto-btn-3 {
-    background-color: #ccc;
-}
-#radio4:checked ~.navigation-auto .auto-btn-4 {
-    background-color: #ccc;
-}
+    cursor: pointer;
+    font-weight: bolder;
+    text-shadow: 0 0 7.5px rgba(0, 0, 0, 0.7);
+    top: 50%;
+    z-index: 1;
+    opacity: 0.7;
+    margin-top: -25px;
+    height: 50px;
+    font-size: 3.125rem;
+    transition: 0.2s;
+  }
+  .right-arrow:hover, .left-arrow:hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  .right-arrow:active, .left-arrow:active {
+    transform: scale(0.9);
+  }
+  
+  .left-arrow {
+    left: 15px;
+  }
+  
+  .right-arrow {
+    right: 15px;
+  }
+  
+  #slide1:checked ~ .left-arrow[for=slide5], #slide1:checked ~ .right-arrow[for=slide2] {
+    display: block;
+  }
+  
+  #slide2:checked ~ .left-arrow[for=slide1], #slide2:checked ~ .right-arrow[for=slide3] {
+    display: block;
+  }
+  
+  #slide3:checked ~ .left-arrow[for=slide2], #slide3:checked ~ .right-arrow[for=slide4] {
+    display: block;
+  }
+  
+  #slide4:checked ~ .left-arrow[for=slide3], #slide4:checked ~ .right-arrow[for=slide5] {
+    display: block;
+  }
+  
+  #slide5:checked ~ .left-arrow[for=slide4], #slide5:checked ~ .right-arrow[for=slide1] {
+    display: block;
+  }
 
 /** Food Menu Section **/
 
@@ -304,7 +396,7 @@ ul.show li a {
 }
 
 .foodMenuItemMainHeader {
-    font-size: xx-large;
+    font-size: 1.5rem;
     color: gold;
     margin-top: 1.5vh;
     margin-bottom: 1.5vh;
@@ -331,7 +423,7 @@ ul.show li a {
 }
 
 .foodMenuItemHeader {
-    font-size: x-large;
+    font-size: 1rem;
     vertical-align: middle;
     font-style: normal;
     font-weight: normal;
@@ -349,13 +441,15 @@ ul.show li a {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    filter: grayscale(100%);
+    /*filter: grayscale(80%);*/
+    opacity: 0.4;
     position: absolute;
     content: "";
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    min-width: 10vw;
 }
 
 .foodMenuItemDescriptions {
@@ -365,19 +459,33 @@ ul.show li a {
     direction: ltr;
     max-width: 0;
     position: relative;
+    min-height: 20vh;
 }
 
 .foodMenuItemDescriptionsNoFlow {
     display: inline-block;
-    visibility: visible;
+    visibility: hidden;
     direction: ltr;
     text-align: center;
+    animation: fadein 2s;
+}
+
+.foodMenuItemDescriptionsWrapper {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: inherit;
+    min-width: inherit;
 }
 
 .foodMenuItemDescriptions p {
-    white-space: nowrap; 
+    white-space: nowrap;
     text-align: left;
-    position: relative;
+}
+
+.foodMenuItemDescriptions p:nth-child(even) {
+    margin-bottom: 1vh;
 }
 
 .foodMenu div:nth-child(even) .foodMenuItemDescriptions.flow {
@@ -410,9 +518,7 @@ ul.show li a {
 .foodMenuItemImages img {
     display: none;
     vertical-align: middle;
-    max-height: 40vh;
-    max-width: 40vw;
-    animation: fadein 2s;    
+    max-height: 40vh;    
 }
 
 @keyframes fadein {
@@ -420,12 +526,20 @@ ul.show li a {
     to {opacity: 1;}
 }
 
-.foodMenuItem.showAfterScrollOn, .foodMenuItem.showAlways {
+.foodMenuItem.showAfterScrollOn, 
+.foodMenuItem.showAlways, 
+.foodMenuItemDescriptionsNoFlow.showAfterScrollOn,
+.foodMenuItemImages.showAfterScrollOn img:first-child {
     visibility: visible;
 }
 
-.foodMenuItemImages.showAfterScrollOn img:first-child {
+.foodMenuItemImages img:first-child {
     display: inline-block;
+    visibility: hidden;    
+}
+
+.foodMenuItemImages.showAfterScrollOn img {
+    animation: fadein 2s; 
 }
 
 /** AboutUs Section **/
@@ -452,14 +566,14 @@ ul.show li a {
 
 .aboutUsDescription p {
     text-align: left;
-    font-size: 20px;
+    font-size: 1rem;
     margin-left: 2vh;
     margin-right: 2vh;
     max-width: 30vw;
 }
 
 .aboutUsCommitments {
-    font-size: x-large;
+    font-size: 1.5rem;
 }
 
 /* Flip Box */
@@ -485,15 +599,16 @@ ul.show li a {
     transform-style: preserve-3d;
 }
 
-.flipBoxInner:hover {
-    transform: rotateY(180deg);
+.flipBoxFront::after {
+    z-index: 10;
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    margin: auto; 
+    opacity: 0.7; 
+    content: "Click on me";
 }
 
-.flipBoxInner:hover > .flipBoxFront {
-    transition-delay: 0.6s;
-    visibility: hidden;
-}  
-  
 .flipBoxFront, .flipBoxBack {
     position: absolute; 
     -webkit-backface-visibility: hidden; /* Safari */
@@ -514,7 +629,7 @@ ul.show li a {
     z-index: 10;
     position: absolute;
     color: white;
-    font-size: xx-large;
+    font-size: 1.3rem;
     bottom: 1vh;
     margin-left: auto;
     margin-right: auto;   
@@ -530,7 +645,7 @@ ul.show li a {
     color: white;
     transform: rotateY(180deg);
     word-wrap: break-word;
-    font-size: large;
+    font-size: 1rem;
 }
 
 /** Contact Section **/
@@ -552,7 +667,7 @@ ul.show li a {
     vertical-align: middle;
     display: flex;
     align-items:center;    
-    font-size: 20px;    
+    font-size: 1.25rem;    
 }
 
 .contact .visitUs, .contact .contactUs {
@@ -562,26 +677,36 @@ ul.show li a {
 
 .contact a {
     text-decoration: none;
-    color: inherit; 
+    color: inherit;    
 }
 
 .contact p {
     text-decoration: underline;
     margin-top: -1vh;
+    font-size: 0.875rem;
+    
 }
 
-.instagram img, .facebook img {
-    vertical-align: middle;
+.contactUs p {
     margin-right: 1vh;
-    margin-left: 1vh;
-    max-height: 50px;
-    min-width: 50px;
 }
 
-.email img {
-    vertical-align: middle;
-    margin-left: 1vh;
+.visitUs p {
+    margin-right: 2vh;
+}
+
+.instagram img {
     margin-right: 1vh;
+}
+
+.facebook img {
+    margin-left: 1vh;
+}
+
+.instagram img, .facebook img, .email img {
+    vertical-align: middle;
+    max-height: 35px;
+    min-width: 35px;
 }
 
 .email span {    
@@ -590,7 +715,8 @@ ul.show li a {
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none; 
+    user-select: none;
+    font-size: 0.875rem;
 }
 
 span.email:before {
@@ -609,7 +735,11 @@ span.email:before {
     flex-direction: row;
     align-items: center;
     height: auto;    
-    justify-content: center;        
+    justify-content: center; 
+    width: 100%;
+    background-color: black;   
+    color: tan; 
+    overflow: hidden;       
 }
 
 .footer p {
@@ -621,8 +751,8 @@ span.email:before {
 
 .backToTopSite {
     position: fixed;
-    bottom: 1.5vh;
-    right: 2.5vw;
+    bottom: 6vh;
+    right: 3vw;
     z-index: 2;   
 }
 
@@ -632,7 +762,7 @@ span.email:before {
     color: white;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 20px;
+    font-size: 1rem;
     height: 30px;
     width: 30px; 
 }
