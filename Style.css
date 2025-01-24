@@ -96,7 +96,7 @@ nav ul li a:hover {
     overflow: hidden;   
     flex: 1;    
     width: 100%;
-    overflow: hidden;     
+    overflow: hidden;  
 }
 
 .introDescriptionOuter div:nth-child(odd) {
@@ -110,8 +110,8 @@ nav ul li a:hover {
     flex-direction: column;  
     overflow: hidden;
     margin: auto;
-    width: 60%;
-    font-size: calc(2.5*var(--site-font-size))
+    flex: 3;
+    font-size: calc(2.5*var(--site-font-size));
 }
 
 .intro .introDescription h1 {
@@ -136,7 +136,8 @@ nav ul li a:hover {
 .intro .introDescriptionOuter .logoL, .intro .introDescriptionOuter .logoR {
     display: flex;
     align-items: center;
-    position: relative;    
+    position: relative;
+    flex: 1;    
 }
 
 .intro .introDescription .introHeaderUnderneath {
@@ -177,6 +178,7 @@ nav ul li a:hover {
   
   .carousel-wrapper, .carousel ul {
     display: flex;
+    flex: 1.5;
   }
   
   .carousel ul {
@@ -187,7 +189,6 @@ nav ul li a:hover {
   .carousel-wrapper {
     position: relative;
     max-width: 600px;
-    margin-bottom: 40px;
   }
   .carousel-wrapper input {
     display: none;
@@ -215,7 +216,7 @@ nav ul li a:hover {
     position: absolute;
     cursor: pointer;
     margin-left: -7.5px;
-    bottom: -12.5px;
+    bottom: 3vh;
     width: 15px;
     height: 15px;
     opacity: 0.5;

@@ -19,6 +19,10 @@
         width: 95vw;
     }
 
+    .nav-dot {
+        bottom: 6vh;
+      }    
+
     /** Food Menu Section **/
 
     .foodMenuItem {
